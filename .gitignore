@@ -13,7 +13,10 @@ __pycache__/
 # ApiFile
 config.ini
 
-#VSCode conf
+# ~.lock File
+.~lock.Musica.csv#
+
+# VSCode conf
 .vscode/
 
 # Distribution / packaging
