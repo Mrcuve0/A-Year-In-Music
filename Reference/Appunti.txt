@@ -1,0 +1,86 @@
+-Raccolata iniziata il 12/12/2017
+-Database clementine xps-pcstudio azzerati il 24/12/2017
+-I Database andranno uniti prima del 07/01/2018
+-Ricordare di unire i database tra pcstudio e xps anche quando scendi ad Arezzo per un weekend e cambi PC di ascolto.
+-Ricordare di unire i database tra pcstudio e xps per le vacanze pasquali e per le vacanze estive
+-In caso di urgenti problemi di OS, backuppare il database con data e motivo del backup, salvare tutto su OneDrive e chiavetta per ridondanza.
+
+--CSV
+
+->L'ascolto di un intero album inizia con la prima canzone di tale album, 
+la colonna 'Album/Song' viene settata ad 'A' e le ripetizioni si riferiscono
+alle ripetizioni dell'album. Le ripetizioni dell'album sono da applicare ad ogni singola canzone.
+
+->L'ascolto di una singola canzone consiste nel settare la colonna 'Album/Song' in 'S', il numero
+di ripetizioni di tale canzoni viene indicata nella colonna accanto e sono riferite alla singola canzone.
+
+->Se una canzone non prevede un album le colonne AlbumTo e AlbumFrom prevedono l'utilizzo di '//'. 
+
+->dal 24/12/2017 (pulizia del database di clemementine) il .csv continua a contenere le informazioni sui passaggi di canzone
+
+->Possiamo ricavare quanti minuti di ascolto sono stati effettuati in una singola giornata (in quanto il csv contiene informazioni
+raccolte giorno per giorno). Per fare ciò è necessario continuare ad aggiornare il csv come sempre (il database non ci semplifica 
+la raccolta, ma ci semplifica l'elaborazione e ci permette ulteriori risultati)
+
+->Possiamo disegnare un grafo in base ai passaggi Album/Artist/song-To -> Album/Artist/song-From
+
+->nel caso di ascolto di una sola canzone si noti che le colonne Album/Artist/song-To -> Album/Artist/song-From contengono 
+gli stessi dati, in questo caso non si dovrà contare un arco sulla canzone/artista/album (che sarebbe un 'cappio') in quanto eventuali 
+cappi verranno conteggiati e riassunti nelle ripetizioni relative alla singola canzone/album.
+(vedere la riga 14 del csv per avere un eempio).
+
+->I passaggi Album/Artist/song-To -> Album/Artist/song-From da laptop->smartphone / smartphone->laptop continuano ad avere senso
+(anche se le prime voci possono non averne, in quanto nel passaggio laptop->smartphone veniva riportato l'ultimo album/canzone/artista
+che era presente nella schermata del cellulare e tutta la raccolta di archi perderebbe senso in quanto tale artista magari era stato 
+ascoltato un settimana prima o peggio (e allora che senso ha se lo scopo è quello di registrare una 'continuità' musicale attraverso
+archi in un grafo?).
+Per esempio: passare da RATM a Hans Zimmer da laptop a telefono: è ovvio che non ha senso, probabilmente ultimamente ho ascoltato RATM 
+su laptop e Hans Zimmer lo ascoltavo una settimana fa su telefono (e nel frattempo mi è cambiato il mood): in questi casi la voce Hans Zimmer
+deve essere completamente ignorata: conta la continuità musicale non quello che si è iniziato/ripreso e che viene segnalato dal lettore musicale.
+
+->In caso di mood salterino (p.es. malinconico->euforico) invece di segnare un Album/Artist/song-To -> Album/Artist/song-From che ad occhio potrebbe 
+sembrare inusuale, meglio iniziare una nuova serie di ascolti, utilizzando tale nuovo ascolto come un nuovo nodo radice 
+(che darà luogo a un nuovo grafo, separato dagli altri già segnati).
+Si preferisce in questo modo avere un insieme di grafi piuttosto che un solo grafo che presenta archi apparentemente tracciati a caso.
+
+--DATABASE
+
+->Il file database di clementine si apre con sqlitebrowser, la table contenente le info sulle canzoni
+si chiama 'songs'.
+
+->il file è stato pulito il 24/12/2017.
+
+->verrà utilizzato a fine raccolta dati e inizio elaborazione in quanto la colonna 'playcount'
+raccoglie, per ogni singola canzone, tutte le sue ripetizioni, oltre ad altre info.
+
+->Possiamo in questo modo ottenere il totale delle ripetizioni (solo laptop e non smartphone) e 
+potr dedurre il numero di minuti totali di ascolto per ogni singola canzone, per ogni singolo album, 
+per ogni singolo artista e per la totalità della musica ascoltata (sfruttando le ripetizioni*durataCanzone)
+
+->Possiamo classificare gli album più ascoltati (sfruttando ripetizioniAlbum*durataAlbum, dove durataAlbum è 
+un'info a se stante nel database (da controllare) oppure ricavabile sommando tutte le durate delle 
+canzoni che lo compongono e ripetizioniAlbum è min(ripetizioneSong1, ripetizioneSong2, ..., ripetizioneSongN)
+
+->Possiamo classificare sugli artisti più ascoltati (sfruttando ripetizioniAlbum*durataAlbum, sommando tale risultato 
+per ogni album di quell'artista che è stato ascoltato)
+
+->Si potrebbe ricavare il genere più ascoltato, cioò richiede un'accurata ricerca e modifica della maggior parte dei tag dei tuoi album.
+
+--ELABORAZIONE
+
+->Script Python (assolutamente)
+
+->uso di dizionari (equivalenti alle mappe in java)
+
+->probabilmente saranno necessari più script che attingeranno le info basilari su artista/album/canzoniAlbum su un unico file csv
+
+->Tale file csv dovrà essere creato da un altro script python, che raggrupperà tali informazioni (salvandole su csv) cercandole dal database di clementine 
+(lo script dovrà interagire con SQL per ricavare efficientemente tali informazioni)
+
+->Lo script principale (quello della raccolta delle informazioni artista/album/canzoniAlbum) dovrà partire dalla lettura del csv 'musica.csv' per poi 
+cercare le info nel database (conviene leggere le colonne artistTo e artistFrom per poi caricare tutti gli album di tale artista e, per ogni album,
+caricare tutte le canzoni che vi appartengono)
+
+->Script python con lo scopo di raccogliere ed elaborare i dati dal database di clementine, ogni calcolo sarà fatto in una funzione propria
+(p.es. una funzione per classificare gli album più ascoltati, una per classificare gli artisti più ascoltati ecc).
+
