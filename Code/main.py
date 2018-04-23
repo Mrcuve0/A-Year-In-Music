@@ -20,14 +20,12 @@ song_el = ''
 
 i = 0
 with open('Musica.csv', 'r') as file:
-    i += 1
     reader = csv.DictReader(file, delimiter=',')
     for row in reader:
-        (allArtists, allAlbums, allSongs) = fn.AASInfoGathering(row['ArtistFrom'], row['AlbumFrom'], row['SongFrom'], allArtists, allAlbums, allSongs, row['Device'], row['Repetitions'], row['AlbumSong'])
-        (allArtists, allAlbums, allSongs) = fn.AASInfoGathering(row['ArtistTo'], row['AlbumTo'], row['SongTo'], allArtists, allAlbums, allSongs, row['Device'], row['Repetitions'], row['AlbumSong'])
-
-
-    print('finito')
+        i += 1
+        (allArtists, allAlbums, allSongs) = fn.AASInfoGathering(row['ArtistFrom'], row['AlbumFrom'], row['SongFrom'], False, allArtists, allAlbums, allSongs, row['Device'], row['Repetitions'], row['AlbumSong'])
+        (allArtists, allAlbums, allSongs) = fn.AASInfoGathering(row['ArtistTo'], row['AlbumTo'], row['SongTo'], True, allArtists, allAlbums, allSongs, row['Device'], row['Repetitions'], row['AlbumSong'])
+        print('finito')
 
 
 ############################################################################################################################################################################
