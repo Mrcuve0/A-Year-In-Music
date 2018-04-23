@@ -37,7 +37,7 @@ def AASInfoGathering(artistName, albumName, songName, allArtists, allAlbums, all
                 print('     Updating \'' + songName + '\' info...')
 
                 print('    --> DA FAREEEEE <--')
-                #song = allSongs[songName]
+                
                 '''
                 for song_el in allSongs:
                     if(song_el.getName() == song.getName()):
