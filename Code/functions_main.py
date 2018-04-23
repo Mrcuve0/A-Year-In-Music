@@ -17,6 +17,7 @@ network = pl.LastFMNetwork(api_key=API_KEY, api_secret=API_SECRET, username=USER
 
 
 def AASInfoGathering(artistName, albumName, songName, allArtists, allAlbums, allSongs, device, repetitions, albumOrSong):
+    '''This function loads all the data from the CSV file, entering new entries if none or updating them if already there'''
     artistFM = network.get_artist(artistName)    
     artistName = artistFM.get_name(properly_capitalized=True)   #Returns the correct name of the artist
 
