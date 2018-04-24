@@ -23,9 +23,9 @@ with open('Musica.csv', 'r') as file:
     reader = csv.DictReader(file, delimiter=',')
     for row in reader:
         i += 1
-        (allArtists, allAlbums, allSongs) = fn.AASInfoGathering(row['ArtistFrom'], row['AlbumFrom'], row['SongFrom'], False, allArtists, allAlbums, allSongs, row['Device'], row['Repetitions'], row['AlbumSong'])
-        (allArtists, allAlbums, allSongs) = fn.AASInfoGathering(row['ArtistTo'], row['AlbumTo'], row['SongTo'], True, allArtists, allAlbums, allSongs, row['Device'], row['Repetitions'], row['AlbumSong'])
-        print('finito')
+        (allArtists, allAlbums, allSongs) = fn.AASInfoGathering(row['ArtistFrom'], row['AlbumFrom'], row['SongFrom'], False, allArtists, allAlbums, allSongs, row['Device'], row['Repetitions'], row['AlbumSong'], row['isFirstListeningAlbum'])
+        (allArtists, allAlbums, allSongs) = fn.AASInfoGathering(row['ArtistTo'], row['AlbumTo'], row['SongTo'], True, allArtists, allAlbums, allSongs, row['Device'], row['Repetitions'], row['AlbumSong'], row['isFirstListeningAlbum'])
+        print('---RIGA ' + str(i) + ' TERMINATA---')
 
 
 ############################################################################################################################################################################

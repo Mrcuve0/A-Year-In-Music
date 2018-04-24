@@ -2,97 +2,309 @@
      Creating an artist object for 'Led Zeppelin'
      Creating a tracklist for 'Led Zeppelin'
      Updating 'allSongs' collection...
+         Tracks in this album:
+
+             -->Black Dog
+             -->Rock and Roll
+             -->The Battle of Evermore
+             -->Stairway to Heaven
+             -->Misty Mountain Hop
+             -->Four Sticks
+             -->Going to California
+             -->When the Levee Breaks
+
+
      Creating album object for 'IV'
      Updating 'allArtists' collection...
      Updating 'allAlbums' collection...
 ---ITERATING---
+
      'Led Zeppelin' already added!
      Gathering 'IV' info...
-     IV already added!
+     'IV' already added!
      Gathering 'IV' info...
-     When the Levee Breaks already added!
+     'When the Levee Breaks' already added!
      Updating 'When the Levee Breaks' info...
 ---ITERATING---
-finito
+
+---RIGA 1 TERMINATA---
 'deadmau5' not found in allArtists
      Creating an artist object for 'deadmau5'
      Creating a tracklist for 'deadmau5'
      Updating 'allSongs' collection...
+         Tracks in this album:
+
+             -->Sometimes Things Get, Whatever
+             -->Complications
+             -->Slip
+             -->Some Kind of Blue
+             -->Brazil (2nd Edit)
+             -->Alone with You
+             -->I Remember
+             -->Faxing Berlin (Piano Acoustic Version)
+             -->Faxing Berlin
+             -->Not Exactly
+             -->Arguru
+             -->So There I Was
+
+
      Creating album object for 'Random Album Title'
      Updating 'allArtists' collection...
      Updating 'allAlbums' collection...
 ---ITERATING---
+
      'deadmau5' already added!
      Gathering 'Random Album Title' info...
-     Random Album Title already added!
+     'Random Album Title' already added!
      Gathering 'Random Album Title' info...
-     I Remember already added!
+     'I Remember' already added!
      Updating 'I Remember' info...
 ---ITERATING---
-finito
+
+---RIGA 2 TERMINATA---
      'deadmau5' already added!
      Gathering 'Random Album Title' info...
-     Random Album Title already added!
+     'Random Album Title' already added!
      Gathering 'Random Album Title' info...
-     I Remember already added!
+     'I Remember' already added!
      Updating 'I Remember' info...
          I'm not updating 'PlayCount': isTo = False
 ---ITERATING---
+
 'Muse' not found in allArtists
      Creating an artist object for 'Muse'
      Creating a tracklist for 'Muse'
      Updating 'allSongs' collection...
+         Tracks in this album:
+
+             -->Supremacy
+             -->Madness
+             -->Panic Station
+             -->Prelude
+             -->Survival
+             -->Follow Me
+             -->Animals
+             -->Explorers
+             -->Big Freeze
+             -->Save Me
+             -->Liquid State
+             -->The 2nd Law: Unsustainable
+             -->The 2nd Law: Isolated System
+
+
      Creating album object for 'The 2nd Law'
      Updating 'allArtists' collection...
      Updating 'allAlbums' collection...
 ---ITERATING---
-finito
+
+---RIGA 3 TERMINATA---
      'Muse' already added!
      Gathering 'The 2nd Law' info...
-     The 2nd Law already added!
+     'The 2nd Law' already added!
      Gathering 'The 2nd Law' info...
-     Animals already added!
+     'Animals' already added!
      Updating 'Animals' info...
          I'm not updating 'PlayCount': isTo = False
 ---ITERATING---
+
 'Mogwai' not found in allArtists
      Creating an artist object for 'Mogwai'
      Creating a tracklist for 'Mogwai'
      Updating 'allSongs' collection...
-     Creating album object for 'Hardcore Will Never Die, But You Will'
+         Tracks in this album:
+
+             -->White Noise
+             -->Mexican Grand Prix
+             -->Rano Pano
+             -->Death Rays
+             -->San Pedro
+             -->Letters to the Metro
+             -->George Square Thatcher Death Party
+             -->How to Be a Werewolf
+             -->Too Raging to Cheers
+             -->You're Lionel Richie
+
+
+     Creating album object for 'Hardcore Will Never Die But You Will'
      Updating 'allArtists' collection...
      Updating 'allAlbums' collection...
 ---ITERATING---
-finito
+
+---RIGA 4 TERMINATA---
      'Mogwai' already added!
-     Gathering 'Hardcore Will Never Die, But You Will' info...
-     Hardcore Will Never Die, But You Will already added!
-     Gathering 'Hardcore Will Never Die, But You Will' info...
-     Too Raging to Cheers already added!
+     Gathering 'Hardcore Will Never Die But You Will' info...
+     'Hardcore Will Never Die But You Will' already added!
+     Gathering 'Hardcore Will Never Die But You Will' info...
+     'Too Raging to Cheers' already added!
      Updating 'Too Raging to Cheers' info...
          I'm not updating 'PlayCount': isTo = False
 ---ITERATING---
+
      'Mogwai' already added!
      Gathering 'Rave Tapes' info...
          Album Rave Tapes not found, collecting info and adding it...
      Creating a tracklist for 'Mogwai'
      Updating 'allSongs' collection...
+         Tracks in this album:
+
+             -->Heard About You Last Night
+             -->Simon Ferocious
+             -->Remurdered
+             -->Hexon Bogon
+             -->Repelish
+             -->Master Card
+             -->Deesh
+             -->Blues Hour
+             -->No Medicine for Regret
+             -->The Lord Is Out of Control
+
+
      Creating album object for 'Rave Tapes'
 ---ITERATING---
-finito
+
+---RIGA 5 TERMINATA---
      'Mogwai' already added!
      Gathering 'Rave Tapes' info...
          Album Rave Tapes not found, collecting info and adding it...
      Creating a tracklist for 'Mogwai'
      Updating 'allSongs' collection...
+         Tracks in this album:
+
+             -->Heard About You Last Night
+             -->Simon Ferocious
+             -->Remurdered
+             -->Hexon Bogon
+             -->Repelish
+             -->Master Card
+             -->Deesh
+             -->Blues Hour
+             -->No Medicine for Regret
+             -->The Lord Is Out of Control
+
+
      Creating album object for 'Rave Tapes'
 ---ITERATING---
+
 'Radiohead' not found in allArtists
      Creating an artist object for 'Radiohead'
      Creating a tracklist for 'Radiohead'
      Updating 'allSongs' collection...
+         Tracks in this album:
+
+             -->Packt Like Sardines in a Crushd Tin Box
+             -->Pyramid Song
+             -->Pulk/Pull Revolving Doors
+             -->You and Whose Army?
+             -->I Might Be Wrong
+             -->Knives Out
+             -->Morning Bell/Amnesiac
+             -->Dollars & Cents
+             -->Hunting Bears
+             -->Like Spinning Plates
+             -->Life in a Glasshouse
+
+
      Creating album object for 'Amnesiac'
      Updating 'allArtists' collection...
      Updating 'allAlbums' collection...
 ---ITERATING---
-finito
+
+---RIGA 6 TERMINATA---
+'The Bloody Beetroots' not found in allArtists
+     Creating an artist object for 'The Bloody Beetroots'
+     Creating a tracklist for 'The Bloody Beetroots'
+     Updating 'allSongs' collection...
+         Tracks in this album:
+
+             -->Romborama
+             -->Have Mercy On Us
+             -->Storm
+             -->Awesome
+             -->Cornelius
+             -->It's Better a DJ on 2 Turntables
+             -->Talkin In My Sleep
+             -->Second Streets Have No Name
+             -->Butter
+             -->Warp 1.9
+             -->FFA 1985
+             -->Theolonius (King Voodoo)
+             -->Yeyo
+             -->Little Stars
+             -->Warp 7.7
+             -->Make Me Blank
+             -->House No. 84
+             -->Mother
+             -->I Love The Bloody Beetroots
+             -->Come La
+             -->Anacletus
+             -->Little Stars
+
+
+     Creating album object for 'Romborama'
+     Updating 'allArtists' collection...
+     Updating 'allAlbums' collection...
+---ITERATING---
+
+     'The Bloody Beetroots' already added!
+     Gathering 'Romborama' info...
+     'Romborama' already added!
+     Gathering 'Romborama' info...
+     'House No. 84' already added!
+     Updating 'House No. 84' info...
+---ITERATING---
+
+---RIGA 7 TERMINATA---
+'Calcutta' not found in allArtists
+     Creating an artist object for 'Calcutta'
+     Creating a tracklist for 'Calcutta'
+     Updating 'allSongs' collection...
+     Updating 'allArtists' collection...
+     Updating 'allAlbums' collection...
+---ITERATING---
+
+     'Calcutta' already added!
+     Gathering '//' info...
+     '//' already added!
+     Gathering '//' info...
+     'Orgasmo' already added!
+     Updating 'Orgasmo' info...
+---ITERATING---
+
+---RIGA 8 TERMINATA---
+'Warhaus' not found in allArtists
+     Creating an artist object for 'Warhaus'
+     Creating a tracklist for 'Warhaus'
+     Updating 'allSongs' collection...
+         Tracks in this album:
+
+             -->I'm Not Him
+             -->The good lie
+             -->Against The Rich
+             -->Leave With Me
+             -->Beaches
+             -->Machinery
+             -->Memory
+             -->Wanda
+             -->Bruxelles
+             -->Time And Again
+
+
+     Creating album object for 'We Fucked A Flame Into Being'
+     Updating 'allArtists' collection...
+     Updating 'allAlbums' collection...
+---ITERATING---
+
+     'Warhaus' already added!
+     Gathering 'We Fucked A Flame Into Being' info...
+     'We Fucked A Flame Into Being' already added!
+     Gathering 'We Fucked A Flame Into Being' info...
+     'Beaches' already added!
+     Updating 'Beaches' info...
+---ITERATING---
+
+---RIGA 9 TERMINATA---
+     'Warhaus' already added!
+     Gathering 'We Fucked A Flame Into Being' info...
+     'We Fucked A Flame Into Being' already added!
+     Gathering 'We Fucked A Flame Into Being' info...
+         FATAL ERROR, SONG 'I’m Not Him' NOT FOUND!
