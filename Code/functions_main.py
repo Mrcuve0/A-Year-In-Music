@@ -58,17 +58,54 @@ def albumCreation(artistName, albumName, songName, albumFM, songFM, allSongs, is
         
 
 
-def AASInfoGathering(artistName, albumName, songName, isTo, allArtists, allAlbums, allSongs, device, repetitions, albumOrSong, isFirstTimeListening):
+def AASInfoGathering(row, writer, artistName, albumName, songName, isTo, allArtists, allAlbums, allSongs, device, repetitions, albumOrSong, isFirstTimeListening):
     '''This function loads all the data from the CSV file, entering new entries if none or updating them if already there'''
     artistFM = network.get_artist(artistName)    
-    artistName = str(artistFM.get_name())   #Returns the correct name of the artist
+    artistNameOLD = artistName
+    artistName = str(artistFM.get_name(properly_capitalized=True))   #Returns the correct name of the artist
 
     albumFM = network.get_album(artistName, albumName)
     if (albumName != '//'):
-        albumName = str(albumFM.get_name()) #Returns the correct name of the album
+        albumNameOLD = albumName
+        albumName = str(albumFM.get_name(properly_capitalized=True)) #Returns the correct name of the album
     
     songFM = network.get_track(artistName, songName)
+    songNameOLD = songName
     songName = str(songFM.get_title(properly_capitalized=True))   #Returns the correct name of the song
+
+    ### UPDATE ARTIST, ALBUM AND SONG NAME INTO .CSV FILE!! ###
+
+    #row['Date'] = row['Moment'] = row['RootNode'] = row['AlbumSong'] = row['Repetitions'] = row['Device'] = row['isStreaming'] = row['isFirstListeningAlbum'] = row['Notes'] = ""
+
+    if isTo == False: 
+        if artistNameOLD != artistName:
+            row['ArtistFrom'] = artistName
+        #else:
+        #    row['ArtistFrom'] = ''
+        if albumNameOLD != albumName:
+            row['AlbumFrom'] = albumName
+        #else:
+        #    row['AlbumFrom'] = ''
+        if songNameOLD != songName:
+            row['SongFrom'] = songName
+        #else:
+        #    row['SongFrom'] = ''
+        #row['ArtistTo'] = row['AlbumTo'] = row['SongTo'] = ''
+    else:
+        if artistNameOLD != artistName:
+            row['ArtistTo'] = artistName
+        #else:
+        #    row['ArtistTo'] = ''
+        if albumNameOLD != albumName:
+            row['AlbumTo'] = albumName
+        #else:
+        #    row['AlbumTo'] = ''
+        if songNameOLD != songName:
+            row['SongTo'] = songName
+        #else:
+        #    row['SongTo'] = ''
+
+    writer.writerow(row)
     
     if (artistName in str(allArtists.keys())):
         print('     \'' + artistName + '\' already added!')
@@ -111,4 +148,46 @@ def AASInfoGathering(artistName, albumName, songName, isTo, allArtists, allAlbum
         allAlbums[albumName] = album
 
     print('---ITERATING---\n')
-    return (allArtists, allAlbums, allSongs);
+    return (allArtists, allAlbums, allSongs)
+
+def fileReview(artistName, albumName, songName):
+    artistNameOLD = artistName
+    albumNameOLD = albumName
+    songNameOLD = songName
+    try:
+        artistFM = network.get_artist(artistName)
+        artistName = str(artistFM.get_name(properly_capitalized=True))   #Returns the correct name of the artist
+    except pl.WSError as e:
+        #print(str(e.get_id()))
+        if str(e.get_id()) == str(6):
+            print('\'' + artistNameOLD + '\' not found in LastFM library, mantaining old value...')
+            artistName = artistNameOLD
+        
+    try:
+        albumFM = network.get_album(artistName, albumName)
+        if (albumName != '//'):
+            albumName = str(albumFM.get_name(properly_capitalized=True)) #Returns the correct name of the album
+    except pl.WSError as e:
+        #print(str(e.get_id()))
+        if str(e.get_id()) == str(6):
+            print('\'' + albumNameOLD + '\' not found in LastFM library, mantaining old value...')
+            albumName = albumNameOLD
+    
+    try:
+        songFM = network.get_track(artistName, songName)
+        songName = str(songFM.get_title(properly_capitalized=True))   #Returns the correct name of the song
+    except pl.WSError as e:
+        #print(str(e.get_id()))
+        if str(e.get_id()) == str(6):
+            print('\'' + songNameOLD + '\' not found in LastFM library, mantaining old value...')
+            songName = songNameOLD
+    
+    return (artistName, albumName, songName)
+
+'''
+def fileReview(reader, writer):
+    
+        AASReview(artistName)
+        AASReview(row['ArtistTo'], row['AlbumTo'], row['SongTo'])
+        writer.writerow(row)
+'''
