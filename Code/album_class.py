@@ -83,3 +83,8 @@ class Album(object):
 
     '''def getArtist(self):
         return self.artist'''
+
+    def updateRepetitions(self, device, repetitions):
+        trackList = self.getTracks()
+        for track in trackList:
+            track.updateRepetitions(device, repetitions)

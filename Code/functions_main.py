@@ -14,126 +14,86 @@ PASSWORD_HASH = pl.md5(APIS[3])
 
 network = pl.LastFMNetwork(api_key=API_KEY, api_secret=API_SECRET, username=USERNAME, password_hash=PASSWORD_HASH)
 
+artistConv = {}
+albumConv = {}
+songConv = {}
+
+
 def albumCreation(artistName, albumName, songName, albumFM, songFM, allSongs, isTo, device, repetitions, albumOrSong, isFirstTimeListening):
     '''This function creates an album Object'''
-    print('     Creating a tracklist for \'' + artistName + '\'')
+    print('     Creating a tracklist for \'' + albumName + '\'')
     print('     Updating \'allSongs\' collection...')
     trackList = []
+    album = Album('//', None, None, None, None, None)
     if (albumName == '//'):
         track = Song(songFM.get_name(), songFM.get_duration())
         trackList.append(track)
+        album = Album('//', None, None, None, None, None)
+        allSongs[songName] = track
     else:
         trackListFM = albumFM.get_tracks()
         print('         Tracks in this album:\n')
         for track_el in trackListFM:    #creating a tracklist from the info retrieved from lastFM
-            track = Song(track_el.get_name(), track_el.get_duration())
+            track_elName = track_el.get_name()
+            track = Song(track_elName, track_el.get_duration())
             trackList.append(track)
-            print('             -->' + track.getName())
+            print('             -->' + track_elName)
+            allSongs[track_elName] = track
         print('\n')
-
-    if(albumOrSong == 'A'):
-        for track_el in trackList:
-            if (device == 'Smartphone' and isTo == True):
-                track_el.addSmartphonePlayCount(repetitions)
-            elif (device == 'Laptop' and isTo == True):
-                track_el.addLaptopPlayCount(repetitions)
-            allSongs[track_el.getName()] = track_el
-    elif (albumOrSong == 'S'):
-        for track_el in trackList:
-            if (device == 'Smartphone' and isTo == True and track_el.getName() == songName):
-                    track_el.addSmartphonePlayCount(int(repetitions))
-            elif (device == 'Laptop'and isTo == True and track_el.getName() == songName):
-                track_el.addLaptopPlayCount(int(repetitions))
-            allSongs[track_el.getName()] = track_el
-    else:
-        print('         I\'m not updating \'PlayCount\': isTo = False')
-
-    if (albumName != '//'):
         print('     Creating album object for \'' + albumName + '\'')
         album = Album(albumName, albumFM.get_wiki_published_date(), trackList, None, len(trackList), isFirstTimeListening)   #Creating an album object with all the tracks
         album.setDuration() #calculating the total duration of the album
+    
+    if (isTo == True and albumOrSong == 'S'):
+        song = allSongs[songName]
+        song.updateRepetitions(device, repetitions)
     else:
-        album = Album('//', None, None, None, None, None,)
+        print('         I\'m not updating \'PlayCount\' for this specific song: isTo = ' + str(isTo) + ', albumOrSong = ' + str(albumOrSong))
+
+    if (isTo == True and albumOrSong == 'A'):
+        album.updateRepetitions(device, repetitions)
+    else:
+        print('         I\'m not updating \'PlayCount\' for this specific album: isTo = ' + str(isTo) + ', albumOrSong = ' + str(albumOrSong))
+
     return (album, allSongs)
         
-
-
-def AASInfoGathering(row, writer, artistName, albumName, songName, isTo, allArtists, allAlbums, allSongs, device, repetitions, albumOrSong, isFirstTimeListening):
+def AASInfoGathering(artistName, albumName, songName, isTo, allArtists, allAlbums, allSongs, device, repetitions, albumOrSong, isFirstTimeListening):
     '''This function loads all the data from the CSV file, entering new entries if none or updating them if already there'''
+    
     artistFM = network.get_artist(artistName)    
-    artistNameOLD = artistName
-    artistName = str(artistFM.get_name(properly_capitalized=True))   #Returns the correct name of the artist
-
     albumFM = network.get_album(artistName, albumName)
-    if (albumName != '//'):
-        albumNameOLD = albumName
-        albumName = str(albumFM.get_name(properly_capitalized=True)) #Returns the correct name of the album
-    
     songFM = network.get_track(artistName, songName)
-    songNameOLD = songName
-    songName = str(songFM.get_title(properly_capitalized=True))   #Returns the correct name of the song
 
-    ### UPDATE ARTIST, ALBUM AND SONG NAME INTO .CSV FILE!! ###
-
-    #row['Date'] = row['Moment'] = row['RootNode'] = row['AlbumSong'] = row['Repetitions'] = row['Device'] = row['isStreaming'] = row['isFirstListeningAlbum'] = row['Notes'] = ""
-
-    if isTo == False: 
-        if artistNameOLD != artistName:
-            row['ArtistFrom'] = artistName
-        #else:
-        #    row['ArtistFrom'] = ''
-        if albumNameOLD != albumName:
-            row['AlbumFrom'] = albumName
-        #else:
-        #    row['AlbumFrom'] = ''
-        if songNameOLD != songName:
-            row['SongFrom'] = songName
-        #else:
-        #    row['SongFrom'] = ''
-        #row['ArtistTo'] = row['AlbumTo'] = row['SongTo'] = ''
-    else:
-        if artistNameOLD != artistName:
-            row['ArtistTo'] = artistName
-        #else:
-        #    row['ArtistTo'] = ''
-        if albumNameOLD != albumName:
-            row['AlbumTo'] = albumName
-        #else:
-        #    row['AlbumTo'] = ''
-        if songNameOLD != songName:
-            row['SongTo'] = songName
-        #else:
-        #    row['SongTo'] = ''
-
-    writer.writerow(row)
-    
     if (artistName in str(allArtists.keys())):
-        print('     \'' + artistName + '\' already added!')
-        print('     Gathering \'' + albumName + '\' info...')
+        print('     Artist \'' + artistName + '\' already added!')
+        print('     Gathering Album \'' + albumName + '\' info...')
         if (albumName in str(allAlbums.keys())):
-            print('     \'' + albumName + '\' already added!')
-            print('     Gathering \'' + albumName + '\' info...')
+            print('     Album \'' + albumName + '\' already added!')
+            print('     Gathering Song \'' + songName + '\' info...')
             if (songName in str(allSongs.keys())):
-                print('     \'' + songName + '\' already added!')
-                print('     Updating \'' + songName + '\' info...')
+                print('     Song \'' + songName + '\' already added!')
+                print('     Updating Song \'' + songName + '\' info...')
+                if (isTo == True and albumOrSong == 'S'):
+                    song = allSongs[songName]
+                    song.updateRepetitions(device, repetitions)
+                else:
+                    print('         I\'m not updating \'PlayCount\' for this specific song: isTo = ' + str(isTo) + ', albumOrSong = ' + str(albumOrSong))
             else:
                 print('         FATAL ERROR, SONG \'' + songName + '\' NOT FOUND!') #All the songs should already be in their respective albums
-                return -1
-            if (isTo == True):
-                song_el = allSongs.get(songName)
-                if (device == 'Smartphone'):
-                    song_el.addSmartphonePlayCount(repetitions)
-                elif (device == 'Laptop'):
-                    song_el.addLaptopPlayCount(repetitions)
+                pass
+            if (isTo == True and albumOrSong == 'A'):
+                album = allAlbums[albumName]
+                album.updateRepetitions(device, repetitions)
             else:
-                print('         I\'m not updating \'PlayCount\': isTo = False')
+                print('         I\'m not updating \'PlayCount\' for this specific album: isTo = ' + str(isTo) + ', albumOrSong = ' + str(albumOrSong))
         else:   #Album not found
             print('         Album \'' + albumName + '\' not found, collecting info and adding it...')
-            artist = Artist(artistName, artistFM.get_top_tags(limit=10), None, artistFM.get_similar(limit=20))
+            artist = allArtists[artistName]
             (album, allSongs) = albumCreation(artistName, albumName, songName, albumFM, songFM, allSongs, isTo, device, repetitions, albumOrSong, isFirstTimeListening)
             artist.addAlbums(album) #adding that album on the artist career
+            allAlbums[albumName] = album
     else:
-        print('\''+ artistName + '\' not found in allArtists')
+        print('Artist \''+ artistName + '\' not found in allArtists')
         print('     Creating an artist object for \'' + artistName + '\'')
             
         #Creating an artist object
@@ -147,47 +107,63 @@ def AASInfoGathering(row, writer, artistName, albumName, songName, isTo, allArti
         print('     Updating \'allAlbums\' collection...')
         allAlbums[albumName] = album
 
-    print('---ITERATING---\n')
     return (allArtists, allAlbums, allSongs)
 
 def fileReview(artistName, albumName, songName):
     artistNameOLD = artistName
     albumNameOLD = albumName
     songNameOLD = songName
-    try:
-        artistFM = network.get_artist(artistName)
-        artistName = str(artistFM.get_name(properly_capitalized=True))   #Returns the correct name of the artist
-    except pl.WSError as e:
-        #print(str(e.get_id()))
-        if str(e.get_id()) == str(6):
-            print('\'' + artistNameOLD + '\' not found in LastFM library, mantaining old value...')
-            artistName = artistNameOLD
-        
-    try:
-        albumFM = network.get_album(artistName, albumName)
-        if (albumName != '//'):
-            albumName = str(albumFM.get_name(properly_capitalized=True)) #Returns the correct name of the album
-    except pl.WSError as e:
-        #print(str(e.get_id()))
-        if str(e.get_id()) == str(6):
-            print('\'' + albumNameOLD + '\' not found in LastFM library, mantaining old value...')
-            albumName = albumNameOLD
     
-    try:
-        songFM = network.get_track(artistName, songName)
-        songName = str(songFM.get_title(properly_capitalized=True))   #Returns the correct name of the song
-    except pl.WSError as e:
-        #print(str(e.get_id()))
-        if str(e.get_id()) == str(6):
-            print('\'' + songNameOLD + '\' not found in LastFM library, mantaining old value...')
-            songName = songNameOLD
+    if (artistNameOLD in artistConv.keys()):    #Artist already found and converted
+        artistName = artistConv.get(artistNameOLD)
+    elif (artistNameOLD in artistConv.values()):
+        pass
+    else:
+        try:
+            artistFM = network.get_artist(artistName)
+            artistName = str(artistFM.get_name(properly_capitalized=True))   #Returns the correct name of the artist
+            artistConv[artistNameOLD] = artistName
+        except pl.WSError as e:
+            #print(str(e.get_id()))
+            print('---Exception raised!---')
+            if str(e.get_id()) == str(6):
+                print('\'' + artistNameOLD + '\' not found in LastFM library, mantaining old value...')
+                artistName = artistNameOLD
+                artistConv[artistNameOLD] = artistName
+        
+    if (albumNameOLD in albumConv.keys()) :  #Album already found and converted
+        albumName = albumConv.get(albumNameOLD) 
+    elif (albumNameOLD in albumConv.values()):
+        pass
+    else:
+        try:
+            albumFM = network.get_album(artistName, albumName)
+            if (albumName != '//'):
+                albumName = str(albumFM.get_name(properly_capitalized=True)) #Returns the correct name of the album
+                albumConv[albumNameOLD] = albumName
+        except pl.WSError as e:
+            #print(str(e.get_id()))
+            print('---Exception raised!---')
+            if str(e.get_id()) == str(6):
+                print('\'' + albumNameOLD + '\' not found in LastFM library, mantaining old value...')
+                albumName = albumNameOLD
+                albumConv[albumNameOLD] = albumName
+    
+    if (songNameOLD in songConv.keys()):    #Song already found and converted
+        songName = songConv.get(songNameOLD)
+    elif (songNameOLD in songConv.values()):
+        pass
+    else:
+        try:
+            songFM = network.get_track(artistName, songName)
+            songName = str(songFM.get_title(properly_capitalized=True))   #Returns the correct name of the song
+            songConv[songNameOLD] = songName
+        except pl.WSError as e:
+            #print(str(e.get_id()))
+            print('---Exception raised!---')
+            if str(e.get_id()) == str(6):
+                print('\'' + songNameOLD + '\' not found in LastFM library, mantaining old value...')
+                songName = songNameOLD
+                songConv[songNameOLD] = songName
     
     return (artistName, albumName, songName)
-
-'''
-def fileReview(reader, writer):
-    
-        AASReview(artistName)
-        AASReview(row['ArtistTo'], row['AlbumTo'], row['SongTo'])
-        writer.writerow(row)
-'''
