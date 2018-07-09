@@ -4,6 +4,8 @@ from album_class import Album
 from song_class import Song 
 import pylast as pl
 
+import discogs_client as dgs
+
 api_file = open('config.ini', 'r')
 APIS = api_file.read().split('\n')
 api_file.close()
