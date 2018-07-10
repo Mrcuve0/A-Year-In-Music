@@ -2,10 +2,15 @@
 from artist_class import Artist
 from album_class import Album
 from song_class import Song 
+
+import os
+from dotenv import load_dotenv
 import pylast as pl
+import discogs_client as dgs_c
 
-import discogs_client as dgs
+load_dotenv()
 
+'''
 api_file = open('config.ini', 'r')
 APIS = api_file.read().split('\n')
 api_file.close()
@@ -13,8 +18,14 @@ API_KEY = APIS[0]
 API_SECRET = APIS[1]
 USERNAME = APIS[2]
 PASSWORD_HASH = pl.md5(APIS[3])
+'''
 
-network = pl.LastFMNetwork(api_key=API_KEY, api_secret=API_SECRET, username=USERNAME, password_hash=PASSWORD_HASH)
+network = pl.LastFMNetwork(api_key=os.environ.get('LASTFM_API_KEY'), \
+api_secret=os.environ.get('LASTFM_API_SECRET'), \
+username=os.environ.get('LASTFM_USERNAME'), \
+password_hash=pl.md5(os.environ.get('LASTFM_PASSWD')))
+
+dgs = dgs_c.Client('AYearInMusic', user_token=os.environ.get('DISCOGS_USER_TOKEN'))
 
 artistConv = {}
 albumConv = {}
