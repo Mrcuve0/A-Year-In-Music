@@ -1,7 +1,7 @@
 """Testing our classes"""
 
-import functions_main as fn
 import csv
+import functions_main as fn
 
 
 allArtists = {}
@@ -28,34 +28,16 @@ with open('/home/sem/OneDrive/Code/A_year_in_Music_2017_2018/Code/Musica.csv', '
         i += 1
         print("Writing row: #" + str(i))
         (row['ArtistFrom'], row['AlbumFrom'], row['SongFrom']) = fn.fileReview(row['ArtistFrom'], row['AlbumFrom'], row['SongFrom'])
-        fn.AASInfoGathering(row['ArtistFrom'], row['AlbumFrom'], row['SongFrom'], False, allArtists, allAlbums, allSongs, row['Device'], row['Repetitions'], row['AlbumSong'], row['isFirstListeningAlbum'])
+        #fn.AASInfoGathering(row['ArtistFrom'], row['AlbumFrom'], row['SongFrom'], False, allArtists, allAlbums, allSongs, row['Device'], row['Repetitions'], row['AlbumSong'], row['isFirstListeningAlbum'])
         print('\n')
         (row['ArtistTo'], row['AlbumTo'], row['SongTo']) = fn.fileReview(row['ArtistTo'], row['AlbumTo'], row['SongTo'])
-        fn.AASInfoGathering(row['ArtistTo'], row['AlbumTo'], row['SongTo'], True, allArtists, allAlbums, allSongs, row['Device'], row['Repetitions'], row['AlbumSong'], row['isFirstListeningAlbum'])
+        #fn.AASInfoGathering(row['ArtistTo'], row['AlbumTo'], row['SongTo'], True, allArtists, allAlbums, allSongs, row['Device'], row['Repetitions'], row['AlbumSong'], row['isFirstListeningAlbum'])
         print('---ITERATING---\n')
         writer.writerow(row)
         #Load on data structure
         
     fileIN.close()
     fileOUT.close()
-
-
-'''
-    for row in reader:
-        i += 1
-        #Lettura file IN, Scrittura file OUT con nomi corretti
-        
-
-        #Caricamento in memoria, lettura file OUT
-        #(allArtists, allAlbums, allSongs) = fn.AASInfoGathering(row, writer, row['ArtistFrom'], row['AlbumFrom'], row['SongFrom'], False, allArtists, allAlbums, allSongs, row['Device'], row['Repetitions'], row['AlbumSong'], row['isFirstListeningAlbum'])
-        fileIN.close()
-        fileOUT.cloe()
-        break
-pass
-
-        (allArtists, allAlbums, allSongs) = fn.AASInfoGathering(row, writer, row['ArtistTo'], row['AlbumTo'], row['SongTo'], True, allArtists, allAlbums, allSongs, row['Device'], row['Repetitions'], row['AlbumSong'], row['isFirstListeningAlbum'])
-        print('---RIGA ' + str(i) + ' TERMINATA---')
-'''
 
 ############################################################################################################################################################################
 

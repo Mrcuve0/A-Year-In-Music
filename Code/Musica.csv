@@ -1,5 +1,5 @@
 Date,Moment,ArtistFrom,AlbumFrom,SongFrom,ArtistTo,AlbumTo,SongTo,RootNode,AlbumSong,Repetitions,Device,isStreaming,isFirstListeningAlbum,Notes
-12-12-2017,Evening,Led Zeppelin,IV,When The Levee Breaks,Led Zeppelin,IV,When The Levee Breaks,Y,S,3,Smartphone,N,N,
+12-12-2017,Evening,Led Zeppelin,Led Zeppelin IV,When The Levee Breaks,Led Zeppelin,Led Zeppelin IV,When The Levee Breaks,Y,S,3,Smartphone,N,N,
 12-12-2017,Evening,deadmau5,Random Album Title,I Remember,deadmau5,Random Album Title,I Remember,Y,S,8,Smartphone,N,N,
 12-12-2017,Evening,deadmau5,Random Album Title,I Remember,Muse,The 2nd Law,Animals,N,S,10,Smartphone,N,N,
 12-12-2017,Evening,Muse,The 2nd Law,Animals,Mogwai,Hardcore Will Never Die But You Will,White Noise,N,A,1,Laptop,N,N,
@@ -398,3 +398,6 @@ Date,Moment,ArtistFrom,AlbumFrom,SongFrom,ArtistTo,AlbumTo,SongTo,RootNode,Album
 28-06-2018,Evening,Daft Punk,Alive 2007,Superheroes / Human After All / Rock'n Roll,Daft Punk,Alive 2007,Encore - Human After All / Together - Together / One More Time (reprise) / Stardust - Music Sounds Better with You,N,S,1,Smartphone,N,N,
 01-07-2018,Evening,Daft Punk,Alive 2007,Encore - Human After All / Together - Together / One More Time (reprise) / Stardust - Music Sounds Better with You,Digitalism,Idealism,Echoes,N,S,2,Smartphone,N,N,
 01-07-2018,Evening,Digitalism,Idealism,Echoes,Todd Terje,It’s Album Time,Intro (It’s Album Time),N,A,1,Smartphone,N,N,
+09-07-2018,Evening,deadmau5,Random Album Title,"Sometimes Things Get, Whatever",deadmau5,Random Album Title,"Sometimes Things Get, Whatever",Y,A,2,Laptop,N,N,
+09-07-2018,Evening,deadmau5,Random Album Title,"Sometimes Things Get, Whatever",deadmau5,Album Title Geas Here,Superliminal,N,A,1,Laptop,N,N,
+10-07-2018,Evening,Queens Of The Stone Age,Songs For The Deaf,"You Think I Ain't Worth A Dollar, But I Feel Like A Millionaire",Queens Of The Stone Age,Songs For The Deaf,"You Think I Ain't Worth A Dollar, But I Feel Like A Millionaire",Y,A,1,Smartphone,N,N,
