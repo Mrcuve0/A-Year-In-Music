@@ -1884,16 +1884,7 @@ songName: 4ware, ID: 1ROBixGgXrYlcCcrBfxAoy
 
 artistName: deadmau5, ID: 2CIMQHirSU0MQqyYHq0eOx
 albumName: //, ID: 1m1V83RrHAsSfmmM8aKy0x
-'71c' Not Found! Keeping old value...
-songName: 71c, ID: 1ROBixGgXrYlcCcrBfxAoy
-     Artist 'deadmau5' already added!
-     Gathering Album '//' info...
-     Album '//' already added!
-     Gathering Song '71c' info...
-     Song '71c' already added!
-     Updating Song '71c' info...
-         Adding +4 to this song (listening source: Laptop)
-         Im not updating 'PlayCount' for this specific album: isTo = True, albumOrSong = S
+songName: 71c, ID: 71c
 ---ITERATING---
 
 Writing row: #48
@@ -4733,24 +4724,27 @@ songName: Take the Power Back - Live, ID: 6eRGup7iLpPqHqTzRlDriz
 Writing row: #123
 artistName: Radiohead, ID: 4Z8W4fKeB5YxbusRsdQVPb
 albumName: Amnesiac, ID: 6V9YnBmFjWmXCBaUVRCVXP
-'Packt Like Sardines in a Crushd Tin Box' Not Found! Keeping old value...
-songName: Packt Like Sardines in a Crushd Tin Box, ID: 6eRGup7iLpPqHqTzRlDriz
+songName: Packt Like Sardines In a Crushed Tin Box, ID: 7he52OqF36BVF6dSVKKQPq
      Artist 'Radiohead' already added!
      Gathering Album 'Amnesiac' info...
      Album 'Amnesiac' already added!
-     Gathering Song 'Packt Like Sardines in a Crushd Tin Box' info...
-         FATAL ERROR, SONG 'Packt Like Sardines in a Crushd Tin Box' NOT FOUND!
+     Gathering Song 'Packt Like Sardines In a Crushed Tin Box' info...
+     Song 'Packt Like Sardines In a Crushed Tin Box' already added!
+     Updating Song 'Packt Like Sardines In a Crushed Tin Box' info...
+         Im not updating 'PlayCount' for this specific song: isTo = False, albumOrSong = A
          Im not updating 'PlayCount' for this specific album: isTo = False, albumOrSong = A
 
 
 artistName: Radiohead, ID: 4Z8W4fKeB5YxbusRsdQVPb
 albumName: Amnesiac, ID: 6V9YnBmFjWmXCBaUVRCVXP
-songName: Packt Like Sardines in a Crushd Tin Box, ID: 6eRGup7iLpPqHqTzRlDriz
+songName: Packt Like Sardines In a Crushed Tin Box, ID: 7he52OqF36BVF6dSVKKQPq
      Artist 'Radiohead' already added!
      Gathering Album 'Amnesiac' info...
      Album 'Amnesiac' already added!
-     Gathering Song 'Packt Like Sardines in a Crushd Tin Box' info...
-         FATAL ERROR, SONG 'Packt Like Sardines in a Crushd Tin Box' NOT FOUND!
+     Gathering Song 'Packt Like Sardines In a Crushed Tin Box' info...
+     Song 'Packt Like Sardines In a Crushed Tin Box' already added!
+     Updating Song 'Packt Like Sardines In a Crushed Tin Box' info...
+         Im not updating 'PlayCount' for this specific song: isTo = True, albumOrSong = A
          Adding +1 to this song (listening source: Smartphone)
          Adding +1 to this song (listening source: Smartphone)
          Adding +1 to this song (listening source: Smartphone)
@@ -6679,8 +6673,8 @@ songName: Take the Power Back - Live, ID: 6eRGup7iLpPqHqTzRlDriz
      Artist 'Rage Against The Machine' already added!
      Gathering Album 'Rage Against The Machine' info...
      Album 'Rage Against The Machine' already added!
-     Gathering Song 'Packt Like Sardines in a Crushd Tin Box' info...
-         FATAL ERROR, SONG 'Packt Like Sardines in a Crushd Tin Box' NOT FOUND!
+     Gathering Song 'Take the Power Back - Live' info...
+         FATAL ERROR, SONG 'Take the Power Back - Live' NOT FOUND!
          Im not updating 'PlayCount' for this specific album: isTo = False, albumOrSong = S
 
 
@@ -6690,8 +6684,8 @@ songName: Take the Power Back - Live, ID: 6eRGup7iLpPqHqTzRlDriz
      Artist 'Rage Against The Machine' already added!
      Gathering Album 'Rage Against The Machine' info...
      Album 'Rage Against The Machine' already added!
-     Gathering Song 'Packt Like Sardines in a Crushd Tin Box' info...
-         FATAL ERROR, SONG 'Packt Like Sardines in a Crushd Tin Box' NOT FOUND!
+     Gathering Song 'Take the Power Back - Live' info...
+         FATAL ERROR, SONG 'Take the Power Back - Live' NOT FOUND!
          Im not updating 'PlayCount' for this specific album: isTo = True, albumOrSong = S
 ---ITERATING---
 
@@ -6962,12 +6956,14 @@ songName: Re-Hash, ID: 4TyL53zUFb1nJDVyU2sBHc
 
 artistName: Radiohead, ID: 4Z8W4fKeB5YxbusRsdQVPb
 albumName: Amnesiac, ID: 6V9YnBmFjWmXCBaUVRCVXP
-songName: Packt Like Sardines in a Crushd Tin Box, ID: 6eRGup7iLpPqHqTzRlDriz
+songName: Packt Like Sardines In a Crushed Tin Box, ID: 7he52OqF36BVF6dSVKKQPq
      Artist 'Radiohead' already added!
      Gathering Album 'Amnesiac' info...
      Album 'Amnesiac' already added!
-     Gathering Song 'Packt Like Sardines in a Crushd Tin Box' info...
-         FATAL ERROR, SONG 'Packt Like Sardines in a Crushd Tin Box' NOT FOUND!
+     Gathering Song 'Packt Like Sardines In a Crushed Tin Box' info...
+     Song 'Packt Like Sardines In a Crushed Tin Box' already added!
+     Updating Song 'Packt Like Sardines In a Crushed Tin Box' info...
+         Im not updating 'PlayCount' for this specific song: isTo = True, albumOrSong = A
          Adding +1 to this song (listening source: Smartphone)
          Adding +1 to this song (listening source: Smartphone)
          Adding +1 to this song (listening source: Smartphone)
@@ -6984,12 +6980,14 @@ songName: Packt Like Sardines in a Crushd Tin Box, ID: 6eRGup7iLpPqHqTzRlDriz
 Writing row: #188
 artistName: Radiohead, ID: 4Z8W4fKeB5YxbusRsdQVPb
 albumName: Amnesiac, ID: 6V9YnBmFjWmXCBaUVRCVXP
-songName: Packt Like Sardines in a Crushd Tin Box, ID: 6eRGup7iLpPqHqTzRlDriz
+songName: Packt Like Sardines In a Crushed Tin Box, ID: 7he52OqF36BVF6dSVKKQPq
      Artist 'Radiohead' already added!
      Gathering Album 'Amnesiac' info...
      Album 'Amnesiac' already added!
-     Gathering Song 'Packt Like Sardines in a Crushd Tin Box' info...
-         FATAL ERROR, SONG 'Packt Like Sardines in a Crushd Tin Box' NOT FOUND!
+     Gathering Song 'Packt Like Sardines In a Crushed Tin Box' info...
+     Song 'Packt Like Sardines In a Crushed Tin Box' already added!
+     Updating Song 'Packt Like Sardines In a Crushed Tin Box' info...
+         Im not updating 'PlayCount' for this specific song: isTo = False, albumOrSong = A
          Im not updating 'PlayCount' for this specific album: isTo = False, albumOrSong = A
 
 
@@ -10656,28 +10654,12 @@ Artist 'Kavinsky' not found in allArtists
 Writing row: #276
 artistName: deadmau5, ID: 2CIMQHirSU0MQqyYHq0eOx
 albumName: //, ID: 1m1V83RrHAsSfmmM8aKy0x
-songName: 71c, ID: 1ROBixGgXrYlcCcrBfxAoy
-     Artist 'deadmau5' already added!
-     Gathering Album '//' info...
-     Album '//' already added!
-     Gathering Song '71c' info...
-     Song '71c' already added!
-     Updating Song '71c' info...
-         Im not updating 'PlayCount' for this specific song: isTo = False, albumOrSong = S
-         Im not updating 'PlayCount' for this specific album: isTo = False, albumOrSong = S
+songName: 71c, ID: 71c
 
 
 artistName: deadmau5, ID: 2CIMQHirSU0MQqyYHq0eOx
 albumName: //, ID: 1m1V83RrHAsSfmmM8aKy0x
-songName: 71c, ID: 1ROBixGgXrYlcCcrBfxAoy
-     Artist 'deadmau5' already added!
-     Gathering Album '//' info...
-     Album '//' already added!
-     Gathering Song '71c' info...
-     Song '71c' already added!
-     Updating Song '71c' info...
-         Adding +3 to this song (listening source: Laptop)
-         Im not updating 'PlayCount' for this specific album: isTo = True, albumOrSong = S
+songName: 71c, ID: 71c
 ---ITERATING---
 
 Writing row: #277
@@ -11909,27 +11891,6 @@ songName: Dangerous, ID: 33B2QbtAj8mbDpwvGTOnBt
 
 Writing row: #312
 artistName: Arctic Monkeys, ID: 7Ln80lUS6He07XvHI8qqHH
-albumName: I Bet You Look Good On The Dancefloor, ID: 3hDvEaeToe5t7VrMV4bRjm
-'Whatever People Say I Am, That's What I'm Not' Not Found! Keeping old value...
-songName: Whatever People Say I Am, That's What I'm Not, ID: 33B2QbtAj8mbDpwvGTOnBt
-     Artist 'Arctic Monkeys' already added!
-     Gathering Album 'I Bet You Look Good On The Dancefloor' info...
-         Album 'I Bet You Look Good On The Dancefloor' not found, collecting info and adding it...
-     Creating a tracklist for 'I Bet You Look Good On The Dancefloor'
-     Updating 'allSongs' collection...
-         Tracks in this album:
-
-             -->I Bet You Look Good On The Dancefloor
-             -->Bigger Boys and Stolen Sweethearts
-             -->Chun Li Flying Bird Kick
-
-
-     Creating album object for 'I Bet You Look Good On The Dancefloor'
-         Im not updating 'PlayCount' for this specific song: isTo = False, albumOrSong = S
-         Im not updating 'PlayCount' for this specific album: isTo = False, albumOrSong = S
-
-
-artistName: Arctic Monkeys, ID: 7Ln80lUS6He07XvHI8qqHH
 albumName: Whatever People Say I Am, That's What I'm Not, ID: 0ndGMh4twJNzPpr5XtHTR2
 songName: I Bet You Look Good On The Dancefloor, ID: 29EkMZmUNz1WsuzaMtVo1i
      Artist 'Arctic Monkeys' already added!
@@ -11955,6 +11916,19 @@ songName: I Bet You Look Good On The Dancefloor, ID: 29EkMZmUNz1WsuzaMtVo1i
 
 
      Creating album object for 'Whatever People Say I Am, That's What I'm Not'
+         Im not updating 'PlayCount' for this specific song: isTo = False, albumOrSong = S
+         Im not updating 'PlayCount' for this specific album: isTo = False, albumOrSong = S
+
+
+artistName: Arctic Monkeys, ID: 7Ln80lUS6He07XvHI8qqHH
+albumName: Whatever People Say I Am, That's What I'm Not, ID: 0ndGMh4twJNzPpr5XtHTR2
+songName: I Bet You Look Good On The Dancefloor, ID: 29EkMZmUNz1WsuzaMtVo1i
+     Artist 'Arctic Monkeys' already added!
+     Gathering Album 'Whatever People Say I Am, That's What I'm Not' info...
+     Album 'Whatever People Say I Am, That's What I'm Not' already added!
+     Gathering Song 'I Bet You Look Good On The Dancefloor' info...
+     Song 'I Bet You Look Good On The Dancefloor' already added!
+     Updating Song 'I Bet You Look Good On The Dancefloor' info...
          Adding +5 to this song (listening source: Smartphone)
          Im not updating 'PlayCount' for this specific album: isTo = True, albumOrSong = S
 ---ITERATING---
@@ -12112,14 +12086,13 @@ songName: Settle For A Draw, ID: 0DGle0LBi7CxDZNQRQUtcC
 Writing row: #318
 artistName: Arctic Monkeys, ID: 7Ln80lUS6He07XvHI8qqHH
 albumName: When The Sun Goes Down, ID: 4hIKrYbjHS1SLSBvvk3vTl
-'Knock A Door Run' Not Found! Keeping old value...
-songName: Knock A Door Run, ID: 0DGle0LBi7CxDZNQRQUtcC
+songName: Settle For A Draw, ID: 0DGle0LBi7CxDZNQRQUtcC
      Artist 'Arctic Monkeys' already added!
      Gathering Album 'When The Sun Goes Down' info...
      Album 'When The Sun Goes Down' already added!
-     Gathering Song 'Knock A Door Run' info...
-     Song 'Knock A Door Run' already added!
-     Updating Song 'Knock A Door Run' info...
+     Gathering Song 'Settle For A Draw' info...
+     Song 'Settle For A Draw' already added!
+     Updating Song 'Settle For A Draw' info...
          Im not updating 'PlayCount' for this specific song: isTo = False, albumOrSong = S
          Im not updating 'PlayCount' for this specific album: isTo = False, albumOrSong = S
 
@@ -14033,23 +14006,27 @@ songName: Go With The Flow, ID: 45DElIx0dXqUH4A88yQFdE
 Writing row: #370
 artistName: Radiohead, ID: 4Z8W4fKeB5YxbusRsdQVPb
 albumName: Amnesiac, ID: 6V9YnBmFjWmXCBaUVRCVXP
-songName: Packt Like Sardines in a Crushd Tin Box, ID: 6eRGup7iLpPqHqTzRlDriz
+songName: Packt Like Sardines In a Crushed Tin Box, ID: 7he52OqF36BVF6dSVKKQPq
      Artist 'Radiohead' already added!
      Gathering Album 'Amnesiac' info...
      Album 'Amnesiac' already added!
-     Gathering Song 'Packt Like Sardines in a Crushd Tin Box' info...
-         FATAL ERROR, SONG 'Packt Like Sardines in a Crushd Tin Box' NOT FOUND!
+     Gathering Song 'Packt Like Sardines In a Crushed Tin Box' info...
+     Song 'Packt Like Sardines In a Crushed Tin Box' already added!
+     Updating Song 'Packt Like Sardines In a Crushed Tin Box' info...
+         Im not updating 'PlayCount' for this specific song: isTo = False, albumOrSong = A
          Im not updating 'PlayCount' for this specific album: isTo = False, albumOrSong = A
 
 
 artistName: Radiohead, ID: 4Z8W4fKeB5YxbusRsdQVPb
 albumName: Amnesiac, ID: 6V9YnBmFjWmXCBaUVRCVXP
-songName: Packt Like Sardines in a Crushd Tin Box, ID: 6eRGup7iLpPqHqTzRlDriz
+songName: Packt Like Sardines In a Crushed Tin Box, ID: 7he52OqF36BVF6dSVKKQPq
      Artist 'Radiohead' already added!
      Gathering Album 'Amnesiac' info...
      Album 'Amnesiac' already added!
-     Gathering Song 'Packt Like Sardines in a Crushd Tin Box' info...
-         FATAL ERROR, SONG 'Packt Like Sardines in a Crushd Tin Box' NOT FOUND!
+     Gathering Song 'Packt Like Sardines In a Crushed Tin Box' info...
+     Song 'Packt Like Sardines In a Crushed Tin Box' already added!
+     Updating Song 'Packt Like Sardines In a Crushed Tin Box' info...
+         Im not updating 'PlayCount' for this specific song: isTo = True, albumOrSong = A
          Adding +3 to this song (listening source: Smartphone)
          Adding +3 to this song (listening source: Smartphone)
          Adding +3 to this song (listening source: Smartphone)
@@ -14303,8 +14280,7 @@ songName: Swing Star, Pt. 1, ID: 0z6QVQ6FbgHFi6qVyh8xSh
 
 artistName: Tangerine Dream, ID: 1BGN1IdyiSR0ZYrkoKNchl
 albumName: Dream Sequence, ID: 7ALFR4o9ZXfqNVv9EOORn1
-'Love on a Real Train' Not Found! Keeping old value...
-songName: Love on a Real Train, ID: 0z6QVQ6FbgHFi6qVyh8xSh
+songName: Love on a Real Train, ID: 49y78l709VxMkIcq7jUJKN
      Artist 'Tangerine Dream' already added!
      Gathering Album 'Dream Sequence' info...
      Album 'Dream Sequence' already added!
@@ -14318,7 +14294,7 @@ songName: Love on a Real Train, ID: 0z6QVQ6FbgHFi6qVyh8xSh
 Writing row: #379
 artistName: Tangerine Dream, ID: 1BGN1IdyiSR0ZYrkoKNchl
 albumName: Dream Sequence, ID: 7ALFR4o9ZXfqNVv9EOORn1
-songName: Love on a Real Train, ID: 0z6QVQ6FbgHFi6qVyh8xSh
+songName: Love on a Real Train, ID: 49y78l709VxMkIcq7jUJKN
      Artist 'Tangerine Dream' already added!
      Gathering Album 'Dream Sequence' info...
      Album 'Dream Sequence' already added!
@@ -15994,5 +15970,180 @@ songName: Intro (It's Album Time), ID: 60EtWSoDRJSFmg99MKZi0x
          Adding +1 to this song (listening source: Laptop)
          Adding +1 to this song (listening source: Laptop)
          Adding +1 to this song (listening source: Laptop)
+---ITERATING---
+
+Writing row: #425
+artistName: Swedish House Mafia, ID: 1h6Cn3P4NGzXbaXidqURXs
+albumName: Until One, ID: 5JRoPXvkRBmwyAA2fkMWgY
+songName: Until One, ID: 2vU6kbZI3bLM6ASsnSe11J
+     Artist 'Swedish House Mafia' already added!
+     Gathering Album 'Until One' info...
+     Album 'Until One' already added!
+     Gathering Song 'Until One' info...
+     Song 'Until One' already added!
+     Updating Song 'Until One' info...
+         Im not updating 'PlayCount' for this specific song: isTo = False, albumOrSong = S
+         Im not updating 'PlayCount' for this specific album: isTo = False, albumOrSong = S
+
+
+artistName: Swedish House Mafia, ID: 1h6Cn3P4NGzXbaXidqURXs
+albumName: Until One, ID: 5JRoPXvkRBmwyAA2fkMWgY
+songName: Until One, ID: 2vU6kbZI3bLM6ASsnSe11J
+     Artist 'Swedish House Mafia' already added!
+     Gathering Album 'Until One' info...
+     Album 'Until One' already added!
+     Gathering Song 'Until One' info...
+     Song 'Until One' already added!
+     Updating Song 'Until One' info...
+         Adding +1 to this song (listening source: Laptop)
+         Im not updating 'PlayCount' for this specific album: isTo = True, albumOrSong = S
+---ITERATING---
+
+Writing row: #426
+artistName: Queens of the Stone Age, ID: 4pejUc4iciQfgdX6OKulQn
+albumName: Songs For The Deaf, ID: 58HZZpS0wxJKwGjoerg0mk
+songName: Go With The Flow, ID: 45DElIx0dXqUH4A88yQFdE
+     Artist 'Queens of the Stone Age' already added!
+     Gathering Album 'Songs For The Deaf' info...
+     Album 'Songs For The Deaf' already added!
+     Gathering Song 'Go With The Flow' info...
+     Song 'Go With The Flow' already added!
+     Updating Song 'Go With The Flow' info...
+         Im not updating 'PlayCount' for this specific song: isTo = False, albumOrSong = S
+         Im not updating 'PlayCount' for this specific album: isTo = False, albumOrSong = S
+
+
+artistName: Queens of the Stone Age, ID: 4pejUc4iciQfgdX6OKulQn
+albumName: Songs For The Deaf, ID: 58HZZpS0wxJKwGjoerg0mk
+songName: Go With The Flow, ID: 45DElIx0dXqUH4A88yQFdE
+     Artist 'Queens of the Stone Age' already added!
+     Gathering Album 'Songs For The Deaf' info...
+     Album 'Songs For The Deaf' already added!
+     Gathering Song 'Go With The Flow' info...
+     Song 'Go With The Flow' already added!
+     Updating Song 'Go With The Flow' info...
+         Adding +3 to this song (listening source: Smartphone)
+         Im not updating 'PlayCount' for this specific album: isTo = True, albumOrSong = S
+---ITERATING---
+
+Writing row: #427
+artistName: Queens of the Stone Age, ID: 4pejUc4iciQfgdX6OKulQn
+albumName: Songs For The Deaf, ID: 58HZZpS0wxJKwGjoerg0mk
+songName: Go With The Flow, ID: 45DElIx0dXqUH4A88yQFdE
+     Artist 'Queens of the Stone Age' already added!
+     Gathering Album 'Songs For The Deaf' info...
+     Album 'Songs For The Deaf' already added!
+     Gathering Song 'Go With The Flow' info...
+     Song 'Go With The Flow' already added!
+     Updating Song 'Go With The Flow' info...
+         Im not updating 'PlayCount' for this specific song: isTo = False, albumOrSong = S
+         Im not updating 'PlayCount' for this specific album: isTo = False, albumOrSong = S
+
+
+artistName: Queens of the Stone Age, ID: 4pejUc4iciQfgdX6OKulQn
+albumName: ...Like Clockwork, ID: 58HZZpS0wxJKwGjoerg0mk
+songName: I Appear Missing, ID: 6mfKEPTYiBAYZ9z0429jsp
+     Artist 'Queens of the Stone Age' already added!
+     Gathering Album 'Songs For The Deaf' info...
+     Album 'Songs For The Deaf' already added!
+     Gathering Song 'I Appear Missing' info...
+     Song 'I Appear Missing' already added!
+     Updating Song 'I Appear Missing' info...
+         Adding +1 to this song (listening source: Smartphone)
+         Im not updating 'PlayCount' for this specific album: isTo = True, albumOrSong = S
+---ITERATING---
+
+Writing row: #428
+artistName: Queens of the Stone Age, ID: 4pejUc4iciQfgdX6OKulQn
+albumName: ...Like Clockwork, ID: 58HZZpS0wxJKwGjoerg0mk
+songName: I Appear Missing, ID: 6mfKEPTYiBAYZ9z0429jsp
+     Artist 'Queens of the Stone Age' already added!
+     Gathering Album 'Songs For The Deaf' info...
+     Album 'Songs For The Deaf' already added!
+     Gathering Song 'I Appear Missing' info...
+     Song 'I Appear Missing' already added!
+     Updating Song 'I Appear Missing' info...
+         Im not updating 'PlayCount' for this specific song: isTo = False, albumOrSong = S
+         Im not updating 'PlayCount' for this specific album: isTo = False, albumOrSong = S
+
+
+artistName: Queens of the Stone Age, ID: 4pejUc4iciQfgdX6OKulQn
+albumName: ...Like Clockwork, ID: 58HZZpS0wxJKwGjoerg0mk
+songName: ...Like Clockwork, ID: 6mfKEPTYiBAYZ9z0429jsp
+     Artist 'Queens of the Stone Age' already added!
+     Gathering Album 'Songs For The Deaf' info...
+     Album 'Songs For The Deaf' already added!
+     Gathering Song 'I Appear Missing' info...
+     Song 'I Appear Missing' already added!
+     Updating Song 'I Appear Missing' info...
+         Adding +1 to this song (listening source: Smartphone)
+         Im not updating 'PlayCount' for this specific album: isTo = True, albumOrSong = S
+---ITERATING---
+
+Writing row: #429
+artistName: Queens of the Stone Age, ID: 4pejUc4iciQfgdX6OKulQn
+albumName: ...Like Clockwork, ID: 58HZZpS0wxJKwGjoerg0mk
+songName: ...Like Clockwork, ID: 6mfKEPTYiBAYZ9z0429jsp
+     Artist 'Queens of the Stone Age' already added!
+     Gathering Album 'Songs For The Deaf' info...
+     Album 'Songs For The Deaf' already added!
+     Gathering Song 'I Appear Missing' info...
+     Song 'I Appear Missing' already added!
+     Updating Song 'I Appear Missing' info...
+         Im not updating 'PlayCount' for this specific song: isTo = False, albumOrSong = A
+         Im not updating 'PlayCount' for this specific album: isTo = False, albumOrSong = A
+
+
+artistName: Queens of the Stone Age, ID: 4pejUc4iciQfgdX6OKulQn
+albumName: Songs For The Deaf, ID: 58HZZpS0wxJKwGjoerg0mk
+songName: You Think I Ain't Worth A Dollar, But I Feel Like A Millionaire, ID: 68DKrU7sTyDpDA5T3dsOlk
+     Artist 'Queens of the Stone Age' already added!
+     Gathering Album 'Songs For The Deaf' info...
+     Album 'Songs For The Deaf' already added!
+     Gathering Song 'You Think I Ain't Worth A Dollar, But I Feel Like A Millionaire' info...
+     Song 'You Think I Ain't Worth A Dollar, But I Feel Like A Millionaire' already added!
+     Updating Song 'You Think I Ain't Worth A Dollar, But I Feel Like A Millionaire' info...
+         Im not updating 'PlayCount' for this specific song: isTo = True, albumOrSong = A
+         Adding +2 to this song (listening source: Laptop)
+         Adding +2 to this song (listening source: Laptop)
+         Adding +2 to this song (listening source: Laptop)
+         Adding +2 to this song (listening source: Laptop)
+         Adding +2 to this song (listening source: Laptop)
+         Adding +2 to this song (listening source: Laptop)
+         Adding +2 to this song (listening source: Laptop)
+         Adding +2 to this song (listening source: Laptop)
+         Adding +2 to this song (listening source: Laptop)
+         Adding +2 to this song (listening source: Laptop)
+         Adding +2 to this song (listening source: Laptop)
+         Adding +2 to this song (listening source: Laptop)
+         Adding +2 to this song (listening source: Laptop)
+         Adding +2 to this song (listening source: Laptop)
+         Adding +2 to this song (listening source: Laptop)
+---ITERATING---
+
+Writing row: #430
+artistName: Queens of the Stone Age, ID: 4pejUc4iciQfgdX6OKulQn
+albumName: Songs For The Deaf, ID: 58HZZpS0wxJKwGjoerg0mk
+songName: You Think I Ain't Worth A Dollar, But I Feel Like A Millionaire, ID: 68DKrU7sTyDpDA5T3dsOlk
+     Artist 'Queens of the Stone Age' already added!
+     Gathering Album 'Songs For The Deaf' info...
+     Album 'Songs For The Deaf' already added!
+     Gathering Song 'You Think I Ain't Worth A Dollar, But I Feel Like A Millionaire' info...
+     Song 'You Think I Ain't Worth A Dollar, But I Feel Like A Millionaire' already added!
+     Updating Song 'You Think I Ain't Worth A Dollar, But I Feel Like A Millionaire' info...
+         Im not updating 'PlayCount' for this specific song: isTo = False, albumOrSong = A
+         Im not updating 'PlayCount' for this specific album: isTo = False, albumOrSong = A
+
+
+artistName: Queens of the Stone Age, ID: 4pejUc4iciQfgdX6OKulQn
+albumName: Villains, ID: 6JdX9MGiEMypqYLMKyIE8a
+songName: Feet Don't Fail Me, ID: 2JB7PvDV0R3Vwbq0iy1WPe
+     Artist 'Queens of the Stone Age' already added!
+     Gathering Album 'Villains' info...
+     Album 'Villains' already added!
+     Gathering Song 'Feet Don't Fail Me' info...
+     Song 'Feet Don't Fail Me' already added!
+     Updating Song 'Feet Don't Fail Me' info...
+         Im not updating 'PlayCount' for this specific song: isTo = True, albumOrSong = A
 ---ITERATING---
 

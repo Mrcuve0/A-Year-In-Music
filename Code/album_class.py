@@ -46,16 +46,6 @@ class Album(object):
             tot += int(track.getDuration())
         self.duration = tot
 
-    '''
-    def setComposer(self, composer):
-        self.composer = composer
-    '''
-
-    '''
-    def setArtist(self, artist):
-        self.artist = artist
-    '''
-
     def getName(self):
         '''returns the name of this album'''
         return self.name
@@ -68,11 +58,6 @@ class Album(object):
         '''returns the total duration of this album'''
         return self.duration
 
-    '''
-    def getComposer(self):
-        return self.composer
-    '''
-
     def getTracks(self):
         '''returns a list of all tracks belonging to this album'''
         return self.tracks
@@ -81,5 +66,7 @@ class Album(object):
         '''returns the number of tracks belonging to this album'''
         return len(self.tracks)
 
-    '''def getArtist(self):
-        return self.artist'''
+    def updateRepetitions(self, device, repetitions):
+        trackList = self.getTracks()
+        for track in trackList:
+            track.updateRepetitions(device, repetitions)

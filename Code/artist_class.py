@@ -4,15 +4,12 @@ class Artist(object):
     '''This class defines a 'Artist' object'''
     artistCount = 0
     
-    def __init__(self, name, genre=None, albums=None, similarArtists=None):
+    def __init__(self, name, genres=None, albums=None, similarArtists=None):
         self.name = name
-        if (genre is None):
-            self.genre = []
+        if (genres is None):
+            self.genres = []
         else:
-            gen = []
-            for rel in iter(genre):
-                gen.append(str(rel.item))
-            self.genre = gen
+            self.genres = genres
         if (albums is None):
             self.albums = []    #[LIST] Albums belonging to this artist
         else:
@@ -21,9 +18,10 @@ class Artist(object):
             self.similarArtists = []
         else:
             sim = []
-            for rel in iter(similarArtists):
-                sim.append(str(rel.item))
+            for artistSP in similarArtists['artists']:
+                sim.append(artistSP['id'])            
             self.similarArtists = sim
+
 
     def setName(self, name):
         self.name = name
