@@ -43,11 +43,3 @@ class Song(object):
 
     def getLaptopPlayCount(self):
         return self.laptopPlayCount
-
-    def updateRepetitions(self, device, repetitions):
-        if (device == 'Smartphone'):
-            print('         Adding +' + str(repetitions) + ' to this song (listening source: Smartphone)')
-            self.addSmartphonePlayCount(repetitions)
-        elif (device == 'Laptop'):
-            print('         Adding +' + str(repetitions) + ' to this song (listening source: Laptop)')
-            self.addLaptopPlayCount(repetitions)
