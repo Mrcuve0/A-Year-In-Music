@@ -34,23 +34,45 @@ artistSP = None #Spotify artist object
 albumSP = None  #Spotify album object
 songSP = None   #Spotify song object
 
-def nameMatching(objectSP, objectName, category):
+def nameMatching(objectSP, objectName, prevObjectID, category):
     '''Using FuzzyWuzzy library: given a list of possible artist/album/song names, let's find the one we're lookin for, using approximate string matching.
-    returns: (artist/album/song)Name, (artist/aolbum/song)ID
+    returns: (artist/album/song)Name, (artist/album/song)ID
     '''
+    # I want to look for the song that is in the albumName that I already found! I want to avoid to look in the wrong album, I'll otain a different ID!
+    # This happen, for instance, when different version of an album exist ("Deluxe/anniversary/Cover" albums)
     object_list = []
     if objectSP[category]['total'] > objectSP[category]['limit']:
         max_range = 'limit'
     else:
         max_range = 'total'
-    for i in range(0, objectSP[category][max_range]):
-        object_list.append(objectSP[category]['items'][i]['name'])
 
-    result = process.extractOne(objectName, object_list)    #We're assuming the name with the highest score is the one we're looking for
-    index = object_list.index(result[0])
-
-    objectName = objectSP[category]['items'][index]['name'] #Saving the fixed artist/album/song name
-    objectID = objectSP[category]['items'][index]['id'] #saving the fixed artist/album/song ID
+    found = 0
+    if (objectSP[category][max_range] != 0):
+        for i in range(0, objectSP[category][max_range]):
+            if category == 'albums':
+                for j in range(0, len(objectSP[category]['items'][i]['artists'])):
+                    if (objectSP[category]['items'][i]['artists'][j]['id'] == prevObjectID):
+                        object_list.append(objectSP[category]['items'][i]['name'])
+                        found = i
+                    else:
+                        object_list.append('//')
+            elif category == 'tracks':
+                if (objectSP[category]['items'][i]['album']['id'] == prevObjectID):
+                    object_list.append(objectSP[category]['items'][i]['name'])
+                    found = i
+                else:
+                    object_list.append('//')
+            else:
+                object_list.append(objectSP[category]['items'][i]['name'])
+        result = process.extractOne(objectName, object_list)
+        index = object_list.index(result[0])
+        if (category != 'artists' and len(objectSP[category]['items'][found]['artists']) > objectSP[category][max_range]):
+            index = found
+        objectName = objectSP[category]['items'][index]['name'] #Saving the fixed artist/album/song name
+        objectID = objectSP[category]['items'][index]['id'] #saving the fixed artist/album/song ID
+    else:
+        print("FATAL ERROR! No elements found in \'"+ category + "\' category, \'" + objectName + "\' not found.")
+    
 
     return (objectName, objectID)
 
@@ -95,7 +117,7 @@ def fileReview(artistName, albumName, songName, artistID, albumID, songID):
                 artistID = str('5kLzaeSHrmS7okc5XNE6lv')
             else:
                 artistSP = sp.search(q='artist:\"' + artistName + '\"', type='artist')  #Looking for the artist in Spotify's DB
-                (artistName, artistID) = nameMatching(artistSP, artistName, 'artists')   #approximate string matching (in: list of artist names, out: the most similar artistName matching our CSV entry)
+                (artistName, artistID) = nameMatching(artistSP, artistName, None, 'artists')   #approximate string matching (in: list of artist names, out: the most similar artistName matching our CSV entry)
 
         except TypeError:
             sys.exit('\'' + artistName + '\' Not Found! TypeError, exiting...') #ERROR
@@ -118,26 +140,37 @@ def fileReview(artistName, albumName, songName, artistID, albumID, songID):
         pass
     else:   #the album hasn't been already processed, let's find its correct name spelling and its ID
         try:
-            if (str(albumName).lower() == str('Rage Against The Machine').lower()): #Exceptions manually added
-                albumID = str('4LaRYkT4oy47wEuQgkLBul')
+
+            '''
             elif (str(albumName).lower() == str('Dope').lower()):
                 albumID = '7zPgCo3kXvezF86DQw2ERZ' 
+            '''
+            
+            if (str(albumName).lower() == str('Rage Against The Machine').lower()): #Exceptions manually added
+                albumID = '4LaRYkT4oy47wEuQgkLBul'
             elif (str(albumName).lower() == str('Dream Sequence').lower()):
                 albumID = '7ALFR4o9ZXfqNVv9EOORn1'
-            elif (str(albumName).lower() == str('My Salsoul').lower()):
-                albumID = str('My Salsoul')
-            elif (str(albumName).lower() == str('Sacrebleu').lower()):
-                albumID = str('Sacrebleu')
+            elif (str(albumName).lower() == str('while(1<2)').lower()):
+                albumID = '7iDqcnIHjisPl2Yf4hsf8f'
             elif (str(albumName).lower() == str('Until One').lower()):
-                albumID = str('5JRoPXvkRBmwyAA2fkMWgY')
-
+                albumID = '5JRoPXvkRBmwyAA2fkMWgY'
+            elif (str(albumName).lower() == str('Glamour').lower()):
+                albumID = '1O8xo7V5Jo326PbctFBVdj'
+            elif (str(albumName).lower() == str('My Salsoul').lower()):     #TIP: If the artist/album/song is not present in spotify's DB, let the ID point to a dummy artist/album/song
+                albumID = '//'
+            elif (str(albumName).lower() == str('Sacrebleu').lower()):
+                albumID = '//'
+            elif (str(albumName).lower() == str('//').lower()):
+                albumID = '//'
             else:
-                albumSP = sp.search(q=str('\"' + artistName + '\" \"' + albumName + '\" NOT ' + 'Anniversary'), type='album')   #Looking for the album in Spotify's DB
+                #albumSP = sp.search(q=str('\"' + artistName + '\" \"' + albumName + '\" NOT ' + 'Anniversary'), type='album')   #Looking for the album in Spotify's DB
+                #albumSP = sp.search(q=str(artistName + ' ' + albumName + ' NOT ' + 'Anniversary'), type='album', limit=30)   #Looking for the album in Spotify's DB
+                albumSP = sp.search(q=str(artistName + ' ' + albumName), type='album', limit=20)   #Looking for the album in Spotify's DB
                 if (albumName != '//' and albumSP['albums']['total'] != 0):     
-                    (albumName, albumID) = nameMatching(albumSP, albumName, 'albums')   #approximate string matching         
+                    (albumName, albumID) = nameMatching(albumSP, albumName, artistID, 'albums')   #approximate string matching         
                     
                 elif (albumSP['albums']['total'] == 0):
-                    sys.exit('\'' + albumName + '\' Not Found! Exiting...') #ERROR
+                    sys.exit('FATAL ALBUM ERROR! \'' + albumName + '\' Not Found! Exiting...') #ERROR
 
         except TypeError:
             sys.exit('\'' + albumName + '\' Not Found! TypeError, exiting...')  #ERROR           
@@ -160,27 +193,68 @@ def fileReview(artistName, albumName, songName, artistID, albumID, songID):
         pass
     else:   #the song hasn't been already processed, let's find its correct name spelling and its ID
         try:
-            if (str(songName).lower() == str('Killing in the Name').lower()):   #Exceptions manually added
-                songID = str('3FUS56gKr9mVBmzvlnodlh')
+
+            '''
             elif (str(songName).lower() == str('Dope - Original Mix').lower()):
-                songID = str('5wElWRFQIzeE1YBe1gTIxp')
-            elif (str(songName).lower() == str('The Dream Is Always The Same').lower()):
-                songID = str('5iRVl2TQ54sk9KMed2iUDy')
-            elif (str(songName).lower() == str('Seconds').lower()):
-                songID = str('Seconds')
-            elif (str(songName).lower() == str('Prologue').lower()):
-                songID = str('Prologue')
+                songID = '5wElWRFQIzeE1YBe1gTIxp'
+                   
             elif (str(songName).lower() == str('Leave the World Behind').lower()):
-                songID = str('3ueNIaHaq1EvW6OOzfGXz7')
-            elif (str(songName).lower() == str('71c').lower()):
-                songID = '71c'
-            elif(str(songName).lower() == str('Love On A Real Train').lower()):
-                songID = '49y78l709VxMkIcq7jUJKN'
+                songID = '3ueNIaHaq1EvW6OOzfGXz7'          
+            
             elif(str(songName).lower() == str('Until One').lower()):
                 songID = '2vU6kbZI3bLM6ASsnSe11J'    
+            elif(str(songName).lower() == str('I\'m Losing More Than I\'ll ever Have').lower()):
+                songID = '3jEJQGprFXpeICSRtPKGDc'
+            elif(str(songName).lower() == str('She\'s Thunderstorms').lower()):
+                songID = '5xw2cHVLw1rlDPp3cL9Zuv'
+            '''
+
+            if (str(songName).lower() == str('Bombtrack').lower()):   #Exceptions manually added
+                songID = '6ZU9RJIZ0fNaFuQM57bDIA'
+            elif (str(songName).lower() == str('Killing in the Name').lower()):   #Exceptions manually added
+                songID = '3FUS56gKr9mVBmzvlnodlh'
+            elif (str(songName).lower() == str('Take the Power Back').lower()):   #Exceptions manually added
+                songID = '3tTL7jlSkowXidYeafFtwG'
+            elif (str(songName).lower() == str('Settle for Nothing').lower()):   #Exceptions manually added
+                songID = '2vuDdXqekkDCSdawJyUpT6'
+            elif (str(songName).lower() == str('Bulllet In the Head').lower()):   #Exceptions manually added
+                songID = '11cxKUEgnVAlesUKt4e3br'
+            elif (str(songName).lower() == str('Know Your Enemy').lower()):   #Exceptions manually added
+                songID = '1IDAJagxB9AQjjYXaiDK1j'
+            elif (str(songName).lower() == str('Wake Up').lower()):   #Exceptions manually added
+                songID = '6zbHSDJjgrNdfIxPyGfPBt'
+            elif (str(songName).lower() == str('Fistful of Steel').lower()):   #Exceptions manually added
+                songID = '3YEk8mVdMI7rxtfimlUd1G'
+            elif (str(songName).lower() == str('Township Rebellion').lower()):   #Exceptions manually added
+                songID = '0WK0EqiidP6WEDOHK34HEe'
+            elif (str(songName).lower() == str('Freedom').lower()):   #Exceptions manually added
+                songID = '1zVE9JBBy8j0KmlbM8Xwhi'
+            elif (str(songName).lower() == str('The Dream Is Always The Same').lower()):
+                songID = '5iRVl2TQ54sk9KMed2iUDy' 
+            elif(str(songName).lower() == str('Love On A Real Train').lower()):
+                songID = '49y78l709VxMkIcq7jUJKN'
+            elif(str(songName).lower() == str('Bloodflood pt. II').lower()):
+                songID = '60AEGzxRNUQ3Pzg4tygzJC'
+            elif(str(songName).lower() == str('Introduzione').lower()):
+                songID = '4pgWywTML1NToZ17quJusD'
+            elif (str(songName).lower() == str('71c').lower()):
+                songID = '//'
+            elif (str(songName).lower() == str('Hyperlandia').lower()):
+                songID = '//'
+            elif(str(songName).lower() == str('San Salvador').lower()):
+                songID = '//'
+            elif (str(songName).lower() == str('Seconds').lower()):
+                songID = '//'
+            elif (str(songName).lower() == str('Prologue').lower()):
+                songID = '//'
             else:
-                songSP = sp.search(q=str('artist:' + artistName + ' album:' + albumName + ' track:' + songName), type='track')  #Looking for the song in Spotify's DB
-                (songName, songID) = nameMatching(songSP, songName, 'tracks')   #approximate string matching  
+                #songSP = sp.search(q=str('artist:' + artistName + ' album:' + albumName + ' track:' + songName), type='track')  #Looking for the song in Spotify's DB
+                #songSP = sp.search(q=str('artist:' + artistName + 'track:' + songName), type='track', limit=50)  
+                #songSP = sp.search(q=str('\"' + artistName + '\" \"' + songName), type='track', limit=50) 
+                #songSP = sp.search(q=str(artistName + ' ' + songName), type='track', limit=20) 
+                songSP = sp.search(q=str(artistName + ' ' + songName), limit=20) 
+                #Looking for the song in Spotify's DB
+                (songName, songID) = nameMatching(songSP, songName, albumID, 'tracks')   #approximate string matching  
 
         except TypeError:
             sys.exit('\'' + songName + '\' Not Found! TypeError, exiting...')   #ERROR   
@@ -207,9 +281,11 @@ def AASInfoLoading(artistID, albumID, songID, isTo, allArtists, allAlbums, allSo
     songFM = network.get_track(artistName, songName)
     '''
 
-    if (artistID == '5Il27M5JXuQLgwDgVrQMgo'):   #Dimitri from Paris, artist with no sufficient infos on Spotifys
+    if (artistID == '//'):
         return
-    if (songID == '71c'):
+    if (albumID == '//'):
+        return
+    if (songID == '//'):
         return
 
 
