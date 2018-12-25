@@ -4,12 +4,12 @@ class Album(object):
     '''This class defines a 'Album' object'''
     albumCount = 0
 
-    def __init__(self, name, year=None, tracks=None, duration=None, num_tracks=None, isFirstTimeListening=None):
+    def __init__(self, name, releaseDate=None, tracks=None, duration=None, num_tracks=None, isFirstTimeListening=None):
         self.name = name
-        if (year is None):
-            self.year = 0
+        if (releaseDate is None):
+            self.releaseDate = 0
         else:
-            self.year = year
+            self.releaseDate = releaseDate
         if (tracks is None):
             self.tracks = []
         else:
@@ -24,6 +24,8 @@ class Album(object):
             self.isFirstTimeListening = isFirstTimeListening
         #self.composer = ""
 
+###############################################################
+
     def __str__(self):
         return self.name
 
@@ -31,13 +33,9 @@ class Album(object):
         '''sets the name of this album'''
         self.name = name
     
-    def setYear(self, year):
-        '''sets the year of release of this album'''
-        self.year = year
-
-    def addTracks(self, song):
-        '''adds a track to the tracklist of the album'''
-        self.tracks.append(song)
+    def setYear(self, releaseDate):
+        '''sets the releaseDate of this album'''
+        self.releaseDate = releaseDate
 
     def setDuration(self):
         '''set the total duration of this album, based on the sum of tracks durations'''
@@ -46,13 +44,20 @@ class Album(object):
             tot += int(track.getDuration())
         self.duration = tot
 
+    def addTracks(self, song):
+        '''adds a track to the tracklist of the album'''
+        self.tracks.append(song)
+
+###############################################################
+    
+
     def getName(self):
         '''returns the name of this album'''
         return self.name
 
-    def getYear(self):
-        '''returns the year of releas of this album'''
-        return self.year
+    def getReleaseDate(self):
+        '''returns the releaseDate of this album'''
+        return self.releaseDate
 
     def getDuration(self):
         '''returns the total duration of this album'''

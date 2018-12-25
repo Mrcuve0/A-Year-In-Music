@@ -160,6 +160,8 @@ def fileReview(artistName, albumName, songName, artistID, albumID, songID):
                 albumID = '//'
             elif (str(albumName).lower() == str('Sacrebleu').lower()):
                 albumID = '//'
+            elif (str(albumName).lower() == str('Leftovers EP').lower()):
+                albumID = '//'
             elif (str(albumName).lower() == str('//').lower()):
                 albumID = '//'
             else:
@@ -239,6 +241,8 @@ def fileReview(artistName, albumName, songName, artistID, albumID, songID):
                 songID = '4pgWywTML1NToZ17quJusD'
             elif (str(songName).lower() == str('71c').lower()):
                 songID = '//'
+            elif (str(songName).lower() == str('The Magnificent').lower()):
+                songID = '//'
             elif (str(songName).lower() == str('Hyperlandia').lower()):
                 songID = '//'
             elif(str(songName).lower() == str('San Salvador').lower()):
@@ -274,12 +278,6 @@ def fileReview(artistName, albumName, songName, artistID, albumID, songID):
 def AASInfoLoading(artistID, albumID, songID, isTo, allArtists, allAlbums, allSongs, device, repetitions, albumOrSong, isFirstTimeListening):
     '''Core function that loads all the data from the CSV file, entering new entries (artist, Album or Song) if none or updating them if already there.
     returns: allArtists, allAlbums, allSongs'''
-    
-    '''
-    artistFM = network.get_artist(artistName)    
-    albumFM = network.get_album(artistName, albumName)
-    songFM = network.get_track(artistName, songName)
-    '''
 
     if (artistID == '//'):
         return
