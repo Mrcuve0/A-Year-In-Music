@@ -4,7 +4,8 @@ class Artist(object):
     '''This class defines a 'Artist' object'''
     artistCount = 0
     
-    def __init__(self, name, followers=None, genres=None, albums=None, popularity=None, similarArtists=None):
+    def __init__(self, ID, name, followers=None, genres=None, albums=None, popularity=None, similarArtists=None):
+        self.ID = ID
         self.name = name
         if (followers is None):
             self.followers = -1
@@ -32,6 +33,9 @@ class Artist(object):
 
 ###############################################################
 
+    def setID(self, ID):
+        self.ID = ID
+
     def setName(self, name):
         self.name = name
     
@@ -49,16 +53,19 @@ class Artist(object):
 
 ###############################################################
 
+    def getID(self, ID):
+        return self.ID
+
     def getName(self):
         return self.name
 
-    def getFollowers(self, followers):
+    def getFollowers(self):
         return self.followers
 
     def getGenre(self):
         return self.genre
     
-    def getPopularity(self, popularity):
+    def getPopularity(self):
         return self.popularity
 
     def getAlbums(self):

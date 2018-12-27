@@ -1,9 +1,13 @@
+import logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
 class Song(object):
     """This class defines a 'song' object"""
     songCount = 0
 
-    def __init__(self, name, duration=None, smartphonePlayCount=None, laptopPlayCount=None):
+    def __init__(self, ID, name, duration=None, smartphonePlayCount=None, laptopPlayCount=None):
         self.name = name
+        self.ID = ID
         if (duration is None):
             self.duration = 0
         else:
@@ -46,8 +50,8 @@ class Song(object):
 
     def updateRepetitions(self, device, repetitions):
         if (device == 'Smartphone'):
-            print('         Adding +' + str(repetitions) + ' to this song (listening source: Smartphone)')
+            logging.info('         Adding +' + str(repetitions) + ' to this song (listening source: Smartphone)')
             self.addSmartphonePlayCount(repetitions)
         elif (device == 'Laptop'):
-            print('         Adding +' + str(repetitions) + ' to this song (listening source: Laptop)')
+            logging.info('         Adding +' + str(repetitions) + ' to this song (listening source: Laptop)')
             self.addLaptopPlayCount(repetitions)
