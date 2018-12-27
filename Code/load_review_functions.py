@@ -7,11 +7,13 @@ import os
 import sys
 from dotenv import load_dotenv, find_dotenv
 from fuzzywuzzy import process
+import logging
 
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 
 load_dotenv(find_dotenv())
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 ######## SPOTIFY ########
 client_credentials_mng = SpotifyClientCredentials(os.getenv('SPOTIFY_CLIENT_ID'), os.getenv('SPOTIFY_CLIENT_SECRET'))
@@ -71,28 +73,28 @@ def nameMatching(objectSP, objectName, prevObjectID, category):
         objectName = objectSP[category]['items'][index]['name'] #Saving the fixed artist/album/song name
         objectID = objectSP[category]['items'][index]['id'] #saving the fixed artist/album/song ID
     else:
-        print("FATAL ERROR! No elements found in \'"+ category + "\' category, \'" + objectName + "\' not found.")
+        logging.info("FATAL ERROR! No elements found in \'"+ category + "\' category, \'" + objectName + "\' not found.")
     
 
     return (objectName, objectID)
 
 def spotifyExceptionHandling(e):
     '''Spotify exception handling: network errors (401, 204, 404, 502) are handled here'''
-    print('---Exception raised!---')
+    logging.info('---Exception raised!---')
     if (str(e.http_status) == str(401)):    #Unauthorized
-        print('The request requires user authentication or, if the request included authorization credentials, authorization has been refused for those credentials.')
+        logging.info('The request requires user authentication or, if the request included authorization credentials, authorization has been refused for those credentials.')
         sys.exit(e.msg)
     if (str(e.http_status) == str(204)):    #No Content
-        print('The request has succeeded but returns no message body.')
+        logging.info('The request has succeeded but returns no message body.')
         sys.exit(e.msg)
     elif (str(e.http_status) == str(404)):    #Not Found
-        print('The requested resource could not be found. This error can be due to a temporary or permanent condition.')
+        logging.info('The requested resource could not be found. This error can be due to a temporary or permanent condition.')
         sys.exit(e.msg)
     elif (str(e.http_status) == str(502)):    #Bad Gateway
-        print('The server was acting as a gateway or proxy and received an invalid response from the upstream server.')
+        logging.info('The server was acting as a gateway or proxy and received an invalid response from the upstream server.')
         sys.exit(e.msg)
     else:
-        print('Exception error: ' + str(e.http_status) + ', ' + str(e.msg))
+        logging.info('Exception error: ' + str(e.http_status) + ', ' + str(e.msg))
 
 def fileReview(artistName, albumName, songName, artistID, albumID, songID):
     '''Reviews the input file, looks (on Spotify) for the correct spelling of artistName, albumName and songName.
@@ -131,7 +133,7 @@ def fileReview(artistName, albumName, songName, artistID, albumID, songID):
         ID_artist_dict[artistID] = artistName
         artist_ID_dict[artistName] = artistID
 
-    print('artistName: ' + artistName + ', ID: ' + artistID)
+    logging.info('artistName: ' + artistName + ', ID: ' + artistID)
         
     if (albumNameOLD in albumConv.keys()) :  #AlbumName already processed and fixed
         albumName = albumConv.get(albumNameOLD) #retrieving the correct name
@@ -186,7 +188,7 @@ def fileReview(artistName, albumName, songName, artistID, albumID, songID):
         ID_album_dict[albumID] = albumName
         album_ID_dict[albumName] = albumID
 
-    print('albumName: ' + albumName + ', ID: ' + albumID)
+    logging.info('albumName: ' + albumName + ', ID: ' + albumID)
     
     if (songNameOLD in songConv.keys()):    #SongName already processed and fixed
         songName = songConv.get(songNameOLD)    #retrieving the correct name
@@ -272,7 +274,7 @@ def fileReview(artistName, albumName, songName, artistID, albumID, songID):
         ID_song_dict[songID] = songName
         song_ID_dict[songName] = songID
 
-    print('songName: ' + songName + ', ID: ' + songID)
+    logging.info('songName: ' + songName + ', ID: ' + songID)
     return (artistID, albumID, songID)
 
 def AASInfoLoading(artistID, albumID, songID, isTo, allArtists, allAlbums, allSongs, device, repetitions, albumOrSong, isFirstTimeListening):
@@ -288,48 +290,48 @@ def AASInfoLoading(artistID, albumID, songID, isTo, allArtists, allAlbums, allSo
 
 
     if (artistID in allArtists.keys()): #Artist already loaded in program memory
-        print('     Artist \'' + str(ID_artist_dict[artistID]) + '\' already added!')
-        print('     Gathering Album \'' + str(ID_album_dict[albumID]) + '\' info...')
+        logging.info('     Artist \'' + str(ID_artist_dict[artistID]) + '\' already added!')
+        logging.info('     Gathering Album \'' + str(ID_album_dict[albumID]) + '\' info...')
         if (albumID in allAlbums.keys()):   #album already added in program memory
-            print('     Album \'' + str(ID_album_dict[albumID]) + '\' already added!')
-            print('     Gathering Song \'' + str(ID_song_dict[songID]) + '\' info...')
+            logging.info('     Album \'' + str(ID_album_dict[albumID]) + '\' already added!')
+            logging.info('     Gathering Song \'' + str(ID_song_dict[songID]) + '\' info...')
             if (songID in allSongs.keys()): #song already added in program memory
-                print('     Song \'' + str(ID_song_dict[songID]) + '\' already added!')
-                print('     Updating Song \'' + str(ID_song_dict[songID]) + '\' info...')
+                logging.info('     Song \'' + str(ID_song_dict[songID]) + '\' already added!')
+                logging.info('     Updating Song \'' + str(ID_song_dict[songID]) + '\' info...')
 
                 if (isTo == True and albumOrSong == 'S'):
                     song = allSongs[songID]
                     song.updateRepetitions(device, repetitions) #Updating repetitions for this specific song
                 else:
-                    print('         Im not updating \'PlayCount\' for this specific song: isTo = ' + str(isTo) + ', albumOrSong = ' + str(albumOrSong))
+                    logging.info('         Im not updating \'PlayCount\' for this specific song: isTo = ' + str(isTo) + ', albumOrSong = ' + str(albumOrSong))
 
             else:   #ERROR
-                print('         FATAL ERROR, SONG \'' + ID_song_dict[songID] + '\' NOT FOUND!') #All the songs should already be in their respective albums
+                logging.info('         FATAL ERROR, SONG \'' + ID_song_dict[songID] + '\' NOT FOUND!') #All the songs should already be in their respective albums
                 pass
             if (isTo == True and albumOrSong == 'A'):
                 album = allAlbums[albumID]
                 album.updateRepetitions(device, repetitions)    #Updating repetitions for the whole tracklist of the album
             else:
-                print('         Im not updating \'PlayCount\' for this specific album: isTo = ' + str(isTo) + ', albumOrSong = ' + str(albumOrSong))
+                logging.info('         Im not updating \'PlayCount\' for this specific album: isTo = ' + str(isTo) + ', albumOrSong = ' + str(albumOrSong))
         else:   #Album not found
-            print('         Album \'' + ID_album_dict[albumID] + '\' not found, collecting info and adding it...')
+            logging.info('         Album \'' + ID_album_dict[albumID] + '\' not found, collecting info and adding it...')
             artist = allArtists[artistID]
             (album, allSongs) = albumCreation(artistID, albumID, songID, songSP, allAlbums, allSongs, isTo, device, repetitions, albumOrSong, isFirstTimeListening)
             artist.addAlbums(album) #adding that album on the artist career
             allAlbums[albumID] = album
     else:
-        print('Artist \''+ str(ID_artist_dict[artistID]) + '\' not found in allArtists')
-        print('     Creating an artist object for \'' + str(ID_artist_dict[artistID]) + '\'')
+        logging.info('Artist \''+ str(ID_artist_dict[artistID]) + '\' not found in allArtists')
+        logging.info('     Creating an artist object for \'' + str(ID_artist_dict[artistID]) + '\'')
             
         #Creating an artist object
         artistSP = sp.artist(artistID)
-        artist = Artist(artistSP['name'], artistSP['genres'], None, sp.artist_related_artists(artistID))
+        artist = Artist(artistSP['id'], artistSP['name'], artistSP['followers']['total'], artistSP['genres'], None, artistSP['popularity'], sp.artist_related_artists(artistID))
         (album, allSongs) = albumCreation(artistID, albumID, songID, songSP, allAlbums, allSongs, isTo, device, repetitions, albumOrSong, isFirstTimeListening)
 
         artist.addAlbums(album) #adding that album on the artist career 
-        print('     Updating \'allArtists\' collection...')
+        logging.info('     Updating \'allArtists\' collection...')
         allArtists[artistID] = artist    
-        print('     Updating \'allAlbums\' collection...')
+        logging.info('     Updating \'allAlbums\' collection...')
         allAlbums[albumID] = album
     return (allArtists, allAlbums, allSongs)
 
@@ -337,8 +339,8 @@ def albumCreation(artistID, albumID, songID, songSP, allAlbums, allSongs, isTo, 
     '''This function creates an album Object, looks (on Discogs) for the tracklist and then updates Song details (duration, date, Number of repetitions etc...)
     returns: album, AllSongs'''
 
-    print('     Creating a tracklist for \'' + str(ID_album_dict[albumID]) + '\'')
-    print('     Updating \'allSongs\' collection...')
+    logging.info('     Creating a tracklist for \'' + str(ID_album_dict[albumID]) + '\'')
+    logging.info('     Updating \'allSongs\' collection...')
 
     trackList = []
     album = Album(None, None, None, None, None, None)
@@ -346,39 +348,33 @@ def albumCreation(artistID, albumID, songID, songSP, allAlbums, allSongs, isTo, 
     if (ID_album_dict[albumID] == '//'):
 
         songSP = sp.track(songID)
-        songName = songSP['name']
-        songDuration = songSP['duration_ms']
-        song = Song(songName, songDuration, 0, 0)
+        song = Song(songSP['id'], songSP['name'], songSP['duration_ms'], 0, 0)
         
         trackList.append(song)
         allSongs[songID] = song
     else:
         albumSP = sp.album(albumID)
         trackListSP = sp.album_tracks(albumID)
-        print('         Tracks in this album:\n')
+        logging.info('         Tracks in this album:\n')
         for songSP in trackListSP['items']:    #creating a tracklist from the info retrieved from spotify
-            songName = songSP['name']
-            songDuration = songSP['duration_ms']
-            song = Song(songName, songDuration, 0, 0)
+            song = Song(songSP['id'], songSP['name'], songSP['duration_ms'], 0, 0)
             trackList.append(song)
-            print('             -->' + songName)
+            logging.info('             -->' + songSP['name'])
             allSongs[songSP['id']] = song
-        print('\n')
-        print('     Creating album object for \'' + str(ID_album_dict[albumID]) + '\'')
-        albumName = albumSP['name']
-        albumReleaseDate = albumSP['release_date']
-        album = Album(albumName, albumReleaseDate,  trackList, None, len(trackList), isFirstTimeListening)   #Creating an album object with all the tracks
+        logging.info('\n')
+        logging.info('     Creating album object for \'' + str(ID_album_dict[albumID]) + '\'')        
+        album = Album(albumSP['id'], albumSP['name'], albumSP['release_date'], albumSP['release_date_precision'], albumSP['label'],  albumSP['popularity'], trackList, None, len(trackList), isFirstTimeListening)   #Creating an album object with all the tracks
         album.setDuration() #calculating the total duration of the album
     
     if (isTo == True and albumOrSong == 'S'):
         song = allSongs[songID]
         song.updateRepetitions(device, repetitions)
     else:
-        print('         Im not updating \'PlayCount\' for this specific song: isTo = ' + str(isTo) + ', albumOrSong = ' + str(albumOrSong))
+        logging.info('         Im not updating \'PlayCount\' for this specific song: isTo = ' + str(isTo) + ', albumOrSong = ' + str(albumOrSong))
 
     if (isTo == True and albumOrSong == 'A'):
         album.updateRepetitions(device, repetitions)
     else:
-        print('         Im not updating \'PlayCount\' for this specific album: isTo = ' + str(isTo) + ', albumOrSong = ' + str(albumOrSong))
+        logging.info('         Im not updating \'PlayCount\' for this specific album: isTo = ' + str(isTo) + ', albumOrSong = ' + str(albumOrSong))
 
     return (album, allSongs)
